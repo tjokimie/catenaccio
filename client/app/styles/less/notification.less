@@ -1,0 +1,27 @@
+@import 'colors';
+
+.notification {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1030;
+    width: 100%;
+    padding: 1.5em 3em;
+    color: @white;
+    text-shadow: 1px 1px 0 @black;
+
+    &.success {
+      background-color: @emerald;
+    }
+    &.error {
+      background-color: @alizarin;
+    }
+
+    i {
+        position: fixed;
+        top: 1.5em;
+        right: 3em;
+        color: white;
+        cursor: pointer;
+    }
+}

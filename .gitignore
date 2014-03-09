@@ -1,0 +1,5 @@
+node_modules
+build
+client/app/bower_components
+.tmp
+workspace.xml

@@ -1,0 +1,64 @@
+@import '../../../bower_components/bootstrap/less/mixins';
+@import '../../../bower_components/bootstrap/less/component-animations';
+@import '../../../bower_components/bootstrap/less/modals';
+@import '../colors';
+
+@border-radius-large: 0;
+@modal-backdrop-bg: @black;
+@modal-content-bg: @white;
+@modal-content-border-color: transparent;
+@modal-content-fallback-border-color: @modal-content-border-color;
+@modal-footer-border-color: transparent;
+@modal-header-border-color: transparent;
+@modal-inner-padding: 1em;
+@modal-title-padding: 0;
+@modal-title-line-height: 0;
+@screen-sm-min: 768px;
+@zindex-modal-background: 1040;
+
+.modal {
+    overflow-y: auto;
+    text-align: center;
+
+    img {
+        max-width: 100%;
+    }
+}
+.modal-dialog {
+    margin-top: 3em;
+    margin-bottom: 1em;
+}
+.modal-open {
+    overflow: auto;
+}
+.modal-footer {
+    margin-top: 0;
+    padding-top: @modal-inner-padding;
+}
+.modal-content {
+    box-shadow: none !important;
+}
+.modal-close {
+    font-size: 1.5em;
+    font-weight: bold;
+    line-height: 1em;
+    color: @silver;
+    cursor: pointer;
+
+    &:hover {
+        color: @concrete;
+    }
+    &:after {
+        content: '\00d7';
+        position: absolute;
+        top: -.75em;
+        right: -.75em;
+        width: 1.5em;
+        height: 1.5em;
+        z-index: @zindex-modal-background + 1;
+        background: @white;
+        border-radius: .75em;
+        line-height: 1.5em;
+        text-align: center;
+    }
+}

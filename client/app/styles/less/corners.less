@@ -1,0 +1,43 @@
+@import 'colors';
+
+.top-corners {
+    .corners;
+
+    &:before {
+        top: -1em;
+        left: -1em;
+    }
+    &:after {
+        top: -1em;
+        right: -1em;
+    }
+}
+
+.bottom-corners {
+    .corners;
+
+    &:before {
+        bottom: -1em;
+        left: -1em;
+    }
+    &:after {
+        bottom: -1em;
+        right: -1em;
+    }
+}
+
+.corners() {
+    position: relative;
+    background-color: @nephritis;
+
+    &:before, &:after {
+        content: '';
+        display: block;
+        position: absolute;
+        z-index: 1;
+        width: 8%;
+        height: 0;
+        border: 1em solid @midnight-blue;
+        padding-bottom: 8%;
+    }
+}

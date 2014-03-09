@@ -1,0 +1,14 @@
+.bubble(@border-color) {
+    position: relative;
+
+    &:after {
+        content: '';
+        display: block;
+        position: absolute;
+        width: 0;
+        height: 0;
+        border-width: 2em;
+        border-style: solid;
+        border-color: @border-color;
+    }
+}
