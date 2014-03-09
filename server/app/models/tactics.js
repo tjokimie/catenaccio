@@ -104,6 +104,9 @@ TacticsSchema.methods.getPublicFields = function () {
     };
 };
 
+TacticsSchema.index({ id: 1 });
+TacticsSchema.set('autoIndex', false);
+
 module.exports = mongoose.model('Tactics', TacticsSchema);
 
 function validNumberOfPlayers(players) {
