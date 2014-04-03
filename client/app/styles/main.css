@@ -26,22 +26,16 @@ p {
 p:not(:last-child) {
   margin-bottom: 1em;
 }
-h1 {
-  font-size: 7.5em;
-  font-family: 'League Gothic', sans-serif;
-  font-weight: normal;
-  line-height: 1em;
-  color: #ecf0f1;
-  text-shadow: 3px 4px 0 #8e44ad, 6px 8px 0 #2c3e50;
-  text-transform: uppercase;
-}
 .row {
   display: flex;
   flex-flow: row wrap;
   align-items: center;
   justify-content: center;
-  margin: 2em auto;
+  margin: 4em auto;
   padding: 0 2em;
+}
+.row:last-child {
+  margin-bottom: 2em;
 }
 .browsehappy {
   margin: 0.2em 0;
@@ -117,28 +111,6 @@ button.disabled i {
   bottom: -1em;
   right: -1em;
 }
-header {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  margin-bottom: 4em;
-  background-color: #8e44ad;
-  padding: 2em 2.66em;
-}
-header:after {
-  content: '';
-  display: block;
-  position: absolute;
-  width: 0;
-  height: 0;
-  border-width: 2em;
-  border-style: solid;
-  border-color: #8e44ad transparent transparent transparent;
-}
-header:after {
-  left: 2.66em;
-  bottom: -4em;
-}
 #pitch {
   position: relative;
   z-index: 2;
@@ -156,7 +128,6 @@ aside ul {
   line-height: 0;
 }
 footer {
-  margin-top: 4em !important;
   color: #bdc3c7;
   text-align: center;
   text-shadow: 1px 1px 0 #ffffff;

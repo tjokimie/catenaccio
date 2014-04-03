@@ -33,23 +33,17 @@ p {
     }
 }
 
-h1 {
-    font-size: 7.5em;
-    font-family: 'League Gothic', sans-serif;
-    font-weight: normal;
-    line-height: 1em;
-    color: @clouds;
-    text-shadow: 3px 4px 0 @wisteria, 6px 8px 0 @midnight-blue;
-    text-transform: uppercase;
-}
-
 .row {
     display: flex;
     flex-flow: row wrap;
     align-items: center;
     justify-content: center;
-    margin: 2em auto;
+    margin: 4em auto;
     padding: 0 2em;
+
+    &:last-child {
+        margin-bottom: 2em;
+    }
 }
 
 .browsehappy {
