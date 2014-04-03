@@ -6,9 +6,13 @@ module.exports = function () {
     };
 
     this.save = function () {
-        browser.executeScript('angular.element($(".fa-save")).scope().isDisabled = function () {}');
+        enableSave();
         element(by.css('.fa-save')).click();
     };
 
     this.notification = element(by.css('.notification'));
 };
+
+function enableSave() {
+    browser.executeScript('angular.element($(".fa-save")).scope().isDisabled = function () {}');
+}
