@@ -11,7 +11,7 @@
     "angular-safe-apply": "https://raw.github.com/yearofmoo/AngularJS-Scope.SafeApply/master/src/Scope.SafeApply.js",
     "angular-translate": "~2.1.0",
     "jquery": "2.1.0",
-    "kineticjs": "5.0.1",
+    "kineticjs": "5.1.0",
     "lodash": "~2.4.1"
   },
   "devDependencies": {
