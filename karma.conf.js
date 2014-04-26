@@ -13,7 +13,7 @@ module.exports = function (config) {
 
         // list of files / patterns to load in the browser
         files: [
-            'app/bower_components/jquery/jquery.js',
+            'app/bower_components/jquery/dist/jquery.js',
             'app/bower_components/jasmine-jquery/lib/jasmine-jquery.js',
             'app/bower_components/kineticjs/kinetic.js',
             'app/bower_components/lodash/dist/lodash.compat.js',

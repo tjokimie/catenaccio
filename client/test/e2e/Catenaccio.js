@@ -11,8 +11,8 @@ module.exports = function () {
     };
 
     this.notification = element(by.css('.notification'));
-};
 
-function enableSave() {
-    browser.executeScript('angular.element($(".fa-save")).scope().isDisabled = function () {}');
-}
+    function enableSave() {
+        browser.executeScript('angular.element($(".fa-save")).scope().isDisabled = function () {}');
+    }
+};

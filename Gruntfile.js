@@ -108,7 +108,7 @@ module.exports = function (grunt) {
         },
 
         // Automatically inject Bower components into the app
-        'bower-install': {
+        'bowerInstall': {
             app: {
                 src: '<%= yeoman.app %>/index.html',
                 ignorePath: '<%= yeoman.app %>/',
@@ -188,7 +188,8 @@ module.exports = function (grunt) {
         // Replace CDN references
         htmlrefs: {
             build: {
-                src: ['<%= yeoman.build %>/*.html']
+                src: '<%= yeoman.build %>/index.html',
+                dest: '<%= yeoman.build %>/index.html'
             }
         },
 
@@ -298,7 +299,7 @@ module.exports = function (grunt) {
         'clean',
         'bower',
         'bower_postinst',
-        'bower-install',
+        'bowerInstall',
         'styles',
         'useminPrepare',
         'concat',
