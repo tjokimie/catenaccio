@@ -5,6 +5,7 @@
   "author": "Tuomo Jokimies",
   "license": "MIT",
   "scripts": {
+    "install": "node ./node_modules/protractor/bin/webdriver-manager update",
     "start": "node ./server/server.js",
     "test": "grunt test"
   },
