@@ -61,8 +61,8 @@ angular.module('catenaccio.services')
             }
             $rootScope.$safeApply(function () {
                 self.history.push(self.layer.toJSON());
+                layerService.setSaved(false);
             });
-            layerService.setSaved(false);
         };
 
         layerService.undoHistory = function () {
@@ -135,7 +135,6 @@ angular.module('catenaccio.services')
                 .on('dragend', function () {
                     if (this.draggable()) {
                         document.body.style.cursor = 'default';
-                        $rootScope.$digest();
                     }
                 });
         }
