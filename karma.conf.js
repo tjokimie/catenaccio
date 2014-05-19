@@ -21,7 +21,7 @@ module.exports = function (config) {
             'app/bower_components/angular-mocks/angular-mocks.js',
             'app/bower_components/angular-resource/angular-resource.js',
             'app/bower_components/angular-route/angular-route.js',
-            'app/bower_components/angular-bootstrap/dist/ui-bootstrap-custom-tpls-0.10.0.js',
+            'app/bower_components/angular-bootstrap/dist/ui-bootstrap-custom-tpls-0.11.0.js',
             'app/bower_components/angular-translate/angular-translate.js',
             'app/bower_components/angular-safe-apply/index.js',
             'app/scripts/**/*.js',
