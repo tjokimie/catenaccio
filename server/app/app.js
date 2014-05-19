@@ -2,6 +2,12 @@
 
 var express = require('express');
 var mongoose = require('mongoose');
+var morgan = require('morgan');
+var compress = require('compression');
+var methodOverride = require('method-override');
+var bodyParser = require('body-parser');
+var serveStatic = require('serve-static');
+var errorHandler = require('errorhandler');
 var config = require('./config/config');
 var fs = require('fs');
 var path = require('path');
@@ -13,25 +19,24 @@ mongoose.connect(config.db);
 requireModels(fs);
 
 app.set('port', process.env.PORT || 3000);
-app.use(express.logger('dev'));
-app.use(express.compress());
-app.use(express.methodOverride());
-app.use(express.bodyParser());
-app.use(express.static(path.join(__dirname, '../../' + config.public)));
-app.use(app.router);
+app.use(morgan('dev'));
+app.use(compress());
+app.use(methodOverride());
+app.use(bodyParser());
+app.use(serveStatic(path.join(__dirname, '../../' + config.public)));
 
 // bootstrap routes
 require('./config/routes')(app);
 
-app.configure('development', function(){
-    app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
-});
-app.configure('production', function(){
-    app.use(express.errorHandler());
-});
+if (process.env.NODE_ENV === 'development') {
+    app.use(errorHandler({ dumpExceptions: true, showStack: true }));
+}
+if (process.env.NODE_ENV === 'production') {
+    app.use(errorHandler());
+}
 
 function requireModels(fs) {
-    fs.readdirSync(path.join(__dirname, './models')).forEach(function(file) {
+    fs.readdirSync(path.join(__dirname, './models')).forEach(function (file) {
         require('./models/' + file);
     });
 }
