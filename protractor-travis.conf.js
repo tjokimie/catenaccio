@@ -1,7 +1,7 @@
 var config = require('./protractor-shared.conf').config;
 
 config.capabilities = {
-    browserName: 'PhantomJS'
+    browserName: 'firefox'
 };
 
 exports.config = config;
