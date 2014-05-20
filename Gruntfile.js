@@ -271,11 +271,16 @@ module.exports = function (grunt) {
 
         protractor: {
             options: {
-                keepAlive: false
+                keepAlive: true
             },
             test: {
                 options: {
                     configFile: 'protractor.conf.js'
+                }
+            },
+            travis: {
+                options: {
+                    configFile: 'protractor-travis.conf.js'
                 }
             }
         }
@@ -285,14 +290,21 @@ module.exports = function (grunt) {
 
     grunt.registerTask('server', ['less', 'express:dev', 'watch']);
 
-    grunt.registerTask('e2e-test', ['express:test', 'protractor']);
+    grunt.registerTask('e2e-test', ['express:test', 'protractor:test']);
 
     grunt.registerTask('test', [
-        'less',
         'jshint',
         'karma',
         'mochaTest',
         'e2e-test'
+    ]);
+
+    grunt.registerTask('test:travis', [
+        'jshint',
+        'karma',
+        'mochaTest',
+        'express:test',
+        'protractor:travis'
     ]);
 
     grunt.registerTask('build', [

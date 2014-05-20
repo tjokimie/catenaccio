@@ -7,7 +7,7 @@
   "scripts": {
     "install": "node ./node_modules/protractor/bin/webdriver-manager update",
     "start": "node ./server/server.js",
-    "test": "grunt test"
+    "test": "grunt test:travis"
   },
   "dependencies": {
     "body-parser": "^1.2.0",
