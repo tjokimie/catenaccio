@@ -5,11 +5,13 @@ angular.module('catenaccio.services')
         var stageService = {};
 
         var self = this;
+        self.listeners = [];
 
         stageService.newStage = function (width, height, container) {
             var options = getScaledStageOptions(width, height);
             options.container = container;
             self.stage = new Kinetic.Stage(options);
+            setListeners();
         };
 
         stageService.addLayer = function (layer) {
@@ -18,12 +20,19 @@ angular.module('catenaccio.services')
 
         stageService.addListener = function (event, fn) {
             var container = self.stage.getContainer();
-            container.addEventListener(event, fn, false);
+            var listener = [ event, fn, false ];
+            self.listeners.push(listener);
+            container.addEventListener.apply(container, listener);
         };
 
         stageService.removeListener = function (event, fn) {
             var container = self.stage.getContainer();
-            container.removeEventListener(event, fn, false);
+            var listener = [ event, fn, false ];
+            var index = self.listeners.indexOf(listener);
+            if (index >= 0) {
+                self.listeners.splice(index, 0);
+            }
+            container.removeEventListener.apply(container, listener);
         };
 
         stageService.getWidth = function () {
@@ -79,6 +88,13 @@ angular.module('catenaccio.services')
                     }
                 };
             }
+        }
+
+        function setListeners() {
+            var container = self.stage.getContainer();
+            self.listeners.forEach(function (listener) {
+                container.addEventListener.apply(container, listener);
+            });
         }
 
         return stageService;

@@ -55,6 +55,12 @@ describe('Service: stageService', function () {
             expect(listener).not.toHaveBeenCalled();
         });
 
+        it('should keep listener after stage update', function () {
+            stageService.newStage(800, 600, container);
+            fireEvent('foo');
+            expect(listener).toHaveBeenCalled();
+        });
+
         function fireEvent(name, type) {
             var event = document.createEvent(type || 'Event');
             event.initEvent(name, false, false);
