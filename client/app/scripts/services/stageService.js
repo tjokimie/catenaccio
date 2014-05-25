@@ -28,10 +28,7 @@ angular.module('catenaccio.services')
         stageService.removeListener = function (event, fn) {
             var container = self.stage.getContainer();
             var listener = [ event, fn, false ];
-            var index = self.listeners.indexOf(listener);
-            if (index >= 0) {
-                self.listeners.splice(index, 0);
-            }
+            _(self.listeners).remove(listener);
             container.removeEventListener.apply(container, listener);
         };
 

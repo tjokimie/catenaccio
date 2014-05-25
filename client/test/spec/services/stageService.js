@@ -55,10 +55,17 @@ describe('Service: stageService', function () {
             expect(listener).not.toHaveBeenCalled();
         });
 
-        it('should keep listener after stage update', function () {
+        it('should keep event listener after stage update', function () {
             stageService.newStage(800, 600, container);
             fireEvent('foo');
             expect(listener).toHaveBeenCalled();
+        });
+
+        it('should not add removed event listener after stage update', function () {
+            stageService.removeListener('foo', listener);
+            stageService.newStage(800, 600, container);
+            fireEvent('foo');
+            expect(listener).not.toHaveBeenCalled();
         });
 
         function fireEvent(name, type) {
