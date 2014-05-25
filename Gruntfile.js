@@ -252,6 +252,12 @@ module.exports = function (grunt) {
                     'node_env': 'test',
                     port: 8000
                 }
+            },
+            travis: {
+                options: {
+                    'node_env': 'travis',
+                    port: 8000
+                }
             }
         },
 
@@ -303,7 +309,7 @@ module.exports = function (grunt) {
         'jshint',
         'karma',
         'mochaTest',
-        'express:test',
+        'express:travis',
         'protractor:travis'
     ]);
 

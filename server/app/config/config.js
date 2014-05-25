@@ -2,12 +2,12 @@
 
 module.exports = (function () {
     switch (process.env.NODE_ENV) {
-    case 'development':
+    case 'production':
         return {
             db: 'mongodb://localhost/test',
-            public: 'client/app/'
+            public: 'build/'
         };
-    case 'production':
+    case 'travis':
         return {
             db: 'mongodb://localhost/test',
             public: 'build/'
