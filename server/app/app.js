@@ -8,6 +8,7 @@ var methodOverride = require('method-override');
 var bodyParser = require('body-parser');
 var serveStatic = require('serve-static');
 var errorHandler = require('errorhandler');
+var helmet = require('helmet');
 var config = require('./config/config');
 var fs = require('fs');
 var path = require('path');
@@ -17,6 +18,8 @@ var app = module.exports = express();
 mongoose.connect(config.db);
 
 requireModels(fs);
+
+securityHeaders();
 
 app.set('port', process.env.PORT || 3000);
 app.use(morgan('dev'));
@@ -39,4 +42,22 @@ function requireModels(fs) {
     fs.readdirSync(path.join(__dirname, './models')).forEach(function (file) {
         require('./models/' + file);
     });
+}
+
+function securityHeaders() {
+    app.use(helmet.xframe());
+    app.use(helmet.csp({
+        'default-src': '\'none\'',
+        'connect-src': '\'self\'',
+        'font-src': ['\'self\'', 'http://netdna.bootstrapcdn.com/'],
+        'script-src': ['\'self\'', '\'unsafe-eval\'', '\'unsafe-inline\'', 'ajax.googleapis.com', 'www.google-analytics.com'],
+        'style-src': ['\'self\'', '\'unsafe-inline\'', 'netdna.bootstrapcdn.com'],
+        sandbox: ['allow-forms', 'allow-same-origin', 'allow-scripts'],
+        'report-uri': ['/report-violation'],
+        reportOnly: false,
+        setAllHeaders: false,
+        safari5: false
+    }));
+    app.use(helmet.iexss());
+    app.use(helmet.hidePoweredBy());
 }
