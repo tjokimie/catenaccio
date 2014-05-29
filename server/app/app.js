@@ -19,7 +19,7 @@ mongoose.connect(config.db);
 
 requireModels(fs);
 
-securityHeaders();
+securityHeaders(app, helmet);
 
 app.set('port', process.env.PORT || 3000);
 app.use(morgan('dev'));
@@ -44,7 +44,7 @@ function requireModels(fs) {
     });
 }
 
-function securityHeaders() {
+function securityHeaders(app, helmet) {
     app.use(helmet.xframe());
     app.use(helmet.csp(config.csp));
     app.use(helmet.iexss());
