@@ -46,18 +46,7 @@ function requireModels(fs) {
 
 function securityHeaders() {
     app.use(helmet.xframe());
-    app.use(helmet.csp({
-        'default-src': '\'none\'',
-        'connect-src': '\'self\'',
-        'font-src': ['\'self\'', 'http://netdna.bootstrapcdn.com/'],
-        'script-src': ['\'self\'', '\'unsafe-eval\'', '\'unsafe-inline\'', 'ajax.googleapis.com', 'www.google-analytics.com'],
-        'style-src': ['\'self\'', '\'unsafe-inline\'', 'netdna.bootstrapcdn.com'],
-        sandbox: ['allow-forms', 'allow-same-origin', 'allow-scripts'],
-        'report-uri': ['/report-violation'],
-        reportOnly: false,
-        setAllHeaders: false,
-        safari5: false
-    }));
+    app.use(helmet.csp(config.csp));
     app.use(helmet.iexss());
     app.use(helmet.hidePoweredBy());
 }
