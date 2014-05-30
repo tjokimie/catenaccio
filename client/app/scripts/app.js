@@ -22,6 +22,7 @@ angular.module('catenaccio', ['catenaccio.directives', 'catenaccio.services', 'n
             'LICENSED_UNDER': 'Licensed under the',
             'MIT_LICENSE': 'MIT License',
             'MOVE': 'Move',
+            'NEW': 'New',
             'PROJECT': 'GitHub Project',
             'REDO': 'Redo',
             'SAVE': 'Save',
