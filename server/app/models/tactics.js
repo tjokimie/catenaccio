@@ -40,17 +40,13 @@ var PlayerSchema = new Schema(_.extend({}, CoordinatesType, {
     }
 }));
 
-var PencilSchema = new Schema({
+var PencilSchema = new Schema(_.extend({}, CoordinatesType, {
     points: {
         type: [Number],
         required: true,
         validate: [evenLengthPoints, 'invalid points length']
-    },
-    z: {
-        type: Number,
-        required: true
     }
-});
+}));
 
 var TacticsSchema = new Schema({
     id: {
@@ -98,6 +94,8 @@ TacticsSchema.methods.getPublicFields = function () {
                 points: pencil.points.map(function (point) {
                     return point;
                 }),
+                x: pencil.x,
+                y: pencil.y,
                 z: pencil.z
             };
         })

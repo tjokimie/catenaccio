@@ -193,13 +193,24 @@ describe('Model: Tactics', function() {
             });
         });
 
-        it('should require points and z', function (done) {
-            delete tacticsData.pencils[0].points;
+        it('should require coordinates', function (done) {
+            delete tacticsData.pencils[0].x;
+            delete tacticsData.pencils[0].y;
             delete tacticsData.pencils[0].z;
             var tactics = new Tactics(tacticsData);
             tactics.save(function (err) {
-                expect(err.errors['pencils.0.points'].type).to.equal('required');
+                expect(err.errors['pencils.0.x'].type).to.equal('required');
+                expect(err.errors['pencils.0.y'].type).to.equal('required');
                 expect(err.errors['pencils.0.z'].type).to.equal('required');
+                done();
+            });
+        });
+
+        it('should require points', function (done) {
+            delete tacticsData.pencils[0].points;
+            var tactics = new Tactics(tacticsData);
+            tactics.save(function (err) {
+                expect(err.errors['pencils.0.points'].type).to.equal('required');
                 done();
             });
         });

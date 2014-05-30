@@ -78,10 +78,9 @@ angular.module('catenaccio.services')
         }
 
         function shapeToPencil(shape) {
-            return {
-                points: shape.getPoints(),
-                z: shape.getZIndex()
-            };
+            var pencil = _.chain(shape).getShapePosition().value();
+            pencil.points = shape.getPoints();
+            return pencil;
         }
 
         _.mixin({
