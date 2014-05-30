@@ -123,7 +123,7 @@ angular.module('catenaccio.services')
                 })
                 .on('mouseout', function () {
                     if (this.draggable()) {
-                        document.body.style.cursor = 'default';
+                        document.body.style.cursor = 'auto';
                     }
                 })
                 .on('dragstart', function () {
@@ -134,7 +134,7 @@ angular.module('catenaccio.services')
                 })
                 .on('dragend', function () {
                     if (this.draggable()) {
-                        document.body.style.cursor = 'default';
+                        document.body.style.cursor = 'auto';
                     }
                 });
         }

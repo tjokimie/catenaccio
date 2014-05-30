@@ -61,9 +61,9 @@ describe('Service: layerService', function () {
                     expect(document.body.style.cursor).toBe('pointer');
                 });
 
-                it('should set cursor to default on mouseout', function () {
+                it('should set cursor to auto on mouseout', function () {
                     circle.fire('mouseout');
-                    expect(document.body.style.cursor).toBe('default');
+                    expect(document.body.style.cursor).toBe('auto');
                 });
 
                 it('should set cursor to move on dragstart', function () {
@@ -71,9 +71,9 @@ describe('Service: layerService', function () {
                     expect(document.body.style.cursor).toBe('move');
                 });
 
-                it('should set cursor to default on dragend', function () {
+                it('should set cursor to auto on dragend', function () {
                     circle.fire('dragend');
-                    expect(document.body.style.cursor).toBe('default');
+                    expect(document.body.style.cursor).toBe('auto');
                 });
 
                 it('should move element to top on dragstart', function () {
