@@ -224,6 +224,12 @@ module.exports = function (grunt) {
                     'fonts/*'
                 ]
             },
+            fontAwesome: {
+                expand: true,
+                cwd: '<%= yeoman.app %>/bower_components/font-awesome/fonts',
+                dest: '<%= yeoman.build %>/fonts',
+                src: '*'
+            },
             styles: {
                 expand: true,
                 cwd: '<%= yeoman.app %>/styles',
@@ -323,6 +329,7 @@ module.exports = function (grunt) {
         'concat',
         'ngmin',
         'copy:build',
+        'copy:fontAwesome',
         'htmlrefs',
         'cssmin',
         'uglify',
