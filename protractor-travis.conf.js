@@ -1,11 +1,13 @@
 var config = require('./protractor-shared.conf').config;
 
-config.allScriptsTimeout = 30000;
-config.seleniumArgs = [ '-browserTimeout=60' ];
+config.sauceUser = process.env.SAUCE_USERNAME;
+config.sauceKey = process.env.SAUCE_ACCESS_KEY;
 
 config.capabilities = {
-    browserName: 'phantomjs',
-    'phantomjs.binary.path': './node_modules/karma-phantomjs-launcher/node_modules/phantomjs/bin/phantomjs'
+    browserName: 'chrome',
+    'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
+    build: process.env.TRAVIS_BUILD_NUMBER,
+    name: 'Catenaccio e2e-tests'
 };
 
 exports.config = config;
