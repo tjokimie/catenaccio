@@ -7,7 +7,7 @@ config.capabilities = {
     browserName: 'chrome',
     'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
     build: process.env.TRAVIS_BUILD_NUMBER,
-    name: 'Catenaccio e2e-tests'
+    name: 'Catenaccio'
 };
 
 exports.config = config;
