@@ -1,5 +1,5 @@
-angular.module('catenaccio.directives', ['catenaccio.services', 'ui.bootstrap', 'pascalprecht.translate']);
-angular.module('catenaccio.services', ['ngResource', 'Scope.safeApply']);
+angular.module('catenaccio.directives', ['catenaccio.services', 'ngRoute', 'pascalprecht.translate', 'ui.bootstrap']);
+angular.module('catenaccio.services', ['ngResource', 'ngRoute', 'Scope.safeApply']);
 angular.module('catenaccio', ['catenaccio.directives', 'catenaccio.services', 'ngRoute', 'pascalprecht.translate'])
     .config(function (pitchBuilderProvider, tacticsBuilderProvider, pencilServiceProvider, $translateProvider) {
         'use strict';
@@ -17,7 +17,7 @@ angular.module('catenaccio', ['catenaccio.directives', 'catenaccio.services', 'n
         $translateProvider.translations('en', {
             'CREATED_BY': '{{app}}. Created by {{creator}}.',
             'DRAW': 'Draw',
-            'ERROR': 'Oops! We are really sorry but something went wrong during save.',
+            'ERROR': 'Sorry! Something went wrong :(',
             'ISSUES': 'Issues',
             'LICENSED_UNDER': 'Licensed under the',
             'MIT_LICENSE': 'MIT License',
@@ -27,7 +27,7 @@ angular.module('catenaccio', ['catenaccio.directives', 'catenaccio.services', 'n
             'REDO': 'Redo',
             'SAVE': 'Save',
             'SAVE_IMAGE': 'Save image',
-            'SUCCESS': 'Tactics saved! Share them with your friends: {{url}}',
+            'SUCCESS': 'Saved!',
             'UNDO': 'Undo'
         });
 

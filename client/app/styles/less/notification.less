@@ -6,18 +6,53 @@
     left: 0;
     z-index: 1030;
     width: 100%;
-    padding: 1.5em 3em;
     color: @white;
     text-shadow: 1px 1px 0 @black;
 
-    &.success {
-      background-color: @emerald;
-    }
-    &.error {
-      background-color: @alizarin;
+    h2 {
+        display: inline-block;
+        font-weight: bold;
     }
 
-    i {
+    span {
+        margin-left: .25em;
+    }
+
+    aside {
+        display: table-cell;
+        vertical-align: middle;
+        text-align: center;
+        font-size: 1.5em;
+        padding: 1em .5em;
+    }
+
+    main {
+        display: table-cell;
+        vertical-align: middle;
+        padding: 1em 1em;
+    }
+
+    &.success {
+        background-color: @emerald;
+
+        aside {
+            background-color: @nephritis;
+        }
+
+        .url {
+            background-color: @nephritis;
+            padding: .5em .25em;
+        }
+    }
+    &.error {
+        background-color: @alizarin;
+
+        aside {
+            background-color: @pomegranate;
+        }
+    }
+
+    .close-notification {
         position: fixed;
         top: 1.5em;
         right: 3em;

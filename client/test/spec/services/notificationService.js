@@ -3,34 +3,54 @@ describe('Service: notificationService', function () {
 
     beforeEach(module('catenaccio.services'));
 
-    var notificationService;
+    var notificationService, $interval;
 
-    beforeEach(inject(function (_notificationService_) {
+    beforeEach(inject(function (_notificationService_, _$interval_) {
         notificationService = _notificationService_;
+        $interval = _$interval_;
     }));
 
-    it('should not have notification', function () {
-        var notification = notificationService.getNotification();
-        expect(notification).toBeUndefined();
-    });
-
-    describe('with notification', function () {
-        var setNotification;
+    describe('success', function () {
+        var success;
 
         beforeEach(function () {
-            setNotification = { message: 'Success!' };
-            notificationService.setNotification(setNotification);
+            success = 'SUCCESS';
+            notificationService.success(success);
         });
 
-        it('should have set notification', function () {
+        it('should show the notification', function () {
             var notification = notificationService.getNotification();
-            expect(notification).toBe(setNotification);
+            expect(notification.notification).toBe(success);
+            expect(notification.type).toBe('success');
+            expect(notification.show).toBe(true);
         });
 
-        it('should remove notification', function () {
-            notificationService.removeNotification();
+        it('should hide the notification', function () {
             var notification = notificationService.getNotification();
-            expect(notification).toBeUndefined();
+            $interval.flush(5000);
+            expect(notification.show).toBe(false);
+        });
+    });
+
+    describe('error', function () {
+        var error;
+
+        beforeEach(function () {
+            error = 'ERROR';
+            notificationService.error(error);
+        });
+
+        it('should show the notification', function () {
+            var notification = notificationService.getNotification();
+            expect(notification.notification).toBe(error);
+            expect(notification.type).toBe('error');
+            expect(notification.show).toBe(true);
+        });
+
+        it('should hide the notification', function () {
+            var notification = notificationService.getNotification();
+            $interval.flush(5000);
+            expect(notification.show).toBe(false);
         });
     });
 });

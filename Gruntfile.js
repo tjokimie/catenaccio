@@ -100,7 +100,7 @@ module.exports = function (grunt) {
                         'angular-bootstrap': [
                             'npm',
                             { grunt: 'html2js' },
-                            { grunt: 'build:modal:tooltip' }
+                            { grunt: 'build:modal' }
                         ]
                     }
                 }
@@ -202,8 +202,7 @@ module.exports = function (grunt) {
             bootstrap: {
                 files: {
                     '<%= yeoman.app %>/bower_components/bootstrap/dist/css/bootstrap.css': [
-                        '<%= yeoman.app %>/styles/less/bootstrap/modals.less',
-                        '<%= yeoman.app %>/styles/less/bootstrap/tooltip.less'
+                        '<%= yeoman.app %>/styles/less/bootstrap/modals.less'
                     ]
                 }
             }

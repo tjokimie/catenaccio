@@ -7,7 +7,7 @@ describe('Catenaccio', function () {
         var catenaccio = new Catenaccio();
         catenaccio.get();
         catenaccio.save();
-        expect(catenaccio.notification.getText()).toMatch(/Tactics saved!/);
+        expect(catenaccio.notification.getAttribute('notification-tooltip')).toBe('Saved!');
     });
 
     it('should redirect after save', function () {

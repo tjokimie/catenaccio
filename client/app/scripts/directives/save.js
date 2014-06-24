@@ -1,5 +1,5 @@
 angular.module('catenaccio.directives')
-    .directive('save', function ($location, Tactics, layerService, notificationService) {
+    .directive('save', function (Tactics, layerService, locationService, notificationService) {
         'use strict';
 
         return {
@@ -7,13 +7,20 @@ angular.module('catenaccio.directives')
             replace: true,
             scope: true,
             template: [
-                '<button ng-click="save()" ng-class="{ disabled: isSaving || isDisabled() }"',
-                '        tooltip="{{ \'SAVE\' | translate }}" tooltip-placement="left">',
-                '  <i class="fa fa-save"></i>',
-                '</button>'
+                '<div ng-class="{ success: notification.type === \'success\',',
+                '                 error: notification.type === \'error\',',
+                '                 show: notification.show === true }"',
+                '     notification-tooltip="{{ notification.notification | translate }}">',
+                '  <button ng-click="save()" ng-class="{ disabled: isDisabled() }"',
+                '          tooltip="{{ \'SAVE\' | translate }}">',
+                '    <i class="fa fa-save"></i>',
+                '  </button>',
+                '</div>'
             ].join('\n'),
             link: function ($scope) {
                 var isSaving = false;
+
+                $scope.notification = notificationService.getNotification();
 
                 $scope.isDisabled = function () {
                     return isSaving || layerService.hasSaved();
@@ -28,19 +35,12 @@ angular.module('catenaccio.directives')
 
                         tactics.$save(function () {
                             isSaving = false;
+                            notificationService.success('SUCCESS');
                             layerService.setSaved(true);
-                            notificationService.setNotification({
-                                key: 'SUCCESS',
-                                url: 'http://catenacc.io/' + tactics.id,
-                                class: 'success'
-                            });
-                            $location.path('/' + tactics.id);
+                            locationService.pathWithoutReload('/' + tactics.id);
                         }, function () {
                             isSaving = false;
-                            notificationService.setNotification({
-                                key: 'ERROR',
-                                class: 'error'
-                            });
+                            notificationService.error('ERROR');
                         });
                     }
                 };

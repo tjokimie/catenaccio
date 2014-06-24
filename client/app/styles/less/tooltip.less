@@ -1,0 +1,77 @@
+@import 'colors';
+
+*[tooltip] {
+    .tooltip(attr(tooltip), 99);
+
+    &:hover:before, &:hover:after {
+        opacity: .9;
+    }
+}
+
+*[notification-tooltip] {
+    .tooltip(attr(notification-tooltip), 100);
+
+    &.show {
+        &:before, &:after {
+            opacity: .9;
+        }
+    }
+
+    &.success {
+        &:before {
+            border-left-color: @nephritis;
+        }
+
+        &:after {
+            background-color: @nephritis;
+        }
+    }
+
+    &.error {
+        &:before {
+            border-left-color: @pomegranate;
+        }
+
+        &:before {
+            background-color: @pomegranate;
+        }
+    }
+}
+
+.tooltip(@attribute, @z-index) {
+    position: relative;
+
+    &:before, &:after {
+        opacity: 0;
+        transition: opacity .15s ease-out;
+    }
+
+    &:before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        right: 100%;
+        z-index: @z-index + 1;
+        margin: -.4em -.2em 0 0;
+        border: .4em solid transparent;
+        border-left-color: @midnight-blue;
+    }
+
+    &:after {
+        content: @attribute;
+        display: inline;
+        position: absolute;
+        top: 50%;
+        right: 100%;
+        z-index: @z-index;
+        margin: -1.15em .75em 0 0;
+        padding: .8em 1em;
+        background-color: @midnight-blue;
+        color: @white;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 300;
+        font-size: .75em;
+        line-height: .75em;
+        white-space: nowrap;
+    }
+}
