@@ -20,19 +20,22 @@ module.exports = (function () {
         return {
             csp: csp,
             db: 'mongodb://localhost/test',
-            public: 'build/'
+            public: 'build/',
+            brute: {}
         };
     case 'travis':
         return {
             csp: {}, // PhantomJS has issues with CSP
             db: 'mongodb://localhost/test',
-            public: 'build/'
+            public: 'build/',
+            brute: { freeRetries: 99 }
         };
     default:
         return {
             csp: csp,
             db: 'mongodb://localhost/test',
-            public: 'client/app/'
+            public: 'client/app/',
+            brute: { freeRetries: 99 }
         };
     }
 }());

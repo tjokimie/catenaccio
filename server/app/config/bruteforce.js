@@ -14,7 +14,4 @@ var store = new MongoStore(function (ready) {
     });
 });
 
-module.exports = new ExpressBrute(store, {
-    minWait: 10 * 1000, // 10 seconds
-    maxWait: 60 * 1000  // 60 minutes
-});
+module.exports = new ExpressBrute(store, config.brute);
