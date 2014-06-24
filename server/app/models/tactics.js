@@ -49,7 +49,7 @@ var PencilSchema = new Schema(_.extend({}, CoordinatesType, {
 }));
 
 var TacticsSchema = new Schema({
-    id: {
+    _id: {
         type: String,
         unique: true,
         required: true,
@@ -73,7 +73,7 @@ var TacticsSchema = new Schema({
 
 TacticsSchema.methods.getPublicFields = function () {
     return {
-        id: this.id,
+        id: this._id,
         football: {
             x: this.football.x,
             y: this.football.y,
@@ -102,7 +102,7 @@ TacticsSchema.methods.getPublicFields = function () {
     };
 };
 
-TacticsSchema.index({ id: 1 });
+TacticsSchema.index({ _id: 1 });
 TacticsSchema.set('autoIndex', false);
 
 module.exports = mongoose.model('Tactics', TacticsSchema);

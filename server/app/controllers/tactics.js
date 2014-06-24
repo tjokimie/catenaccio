@@ -9,14 +9,14 @@ exports.create = function (req, res) {
         if (err) {
             res.send(400);
         } else {
-            res.location('/api/tactics/' + data.id);
+            res.location('/api/tactics/' + data._id);
             res.send(201, data.getPublicFields());
         }
     });
 };
 
 exports.findOne = function (req, res) {
-    Tactics.findOne({ id: req.params.id }, function (err, data) {
+    Tactics.findOne({ _id: req.params.id }, function (err, data) {
         if (err || !data) {
             res.send(404);
         } else {
