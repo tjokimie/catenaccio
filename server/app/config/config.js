@@ -28,14 +28,14 @@ module.exports = (function () {
             csp: {}, // PhantomJS has issues with CSP
             db: 'mongodb://localhost/test',
             public: 'build/',
-            brute: { freeRetries: 99 }
+            brute: { freeRetries: 99999 }
         };
     default:
         return {
             csp: csp,
             db: 'mongodb://localhost/test',
             public: 'client/app/',
-            brute: { freeRetries: 99 }
+            brute: { freeRetries: 99999 }
         };
     }
 }());
