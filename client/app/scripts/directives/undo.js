@@ -8,7 +8,7 @@ angular.module('catenaccio.directives')
             scope: true,
             template: [
                 '<button ng-click="undoHistory()" ng-class="{ disabled: isDisabled() }"',
-                '        tooltip="{{ \'UNDO\' | translate }}" tooltip-placement="left">',
+                '        tooltip="{{ \'UNDO\' | translate }}">',
                 '  <i class="fa fa-undo"></i>',
                 '</button>'
             ].join('\n'),

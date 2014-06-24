@@ -8,8 +8,7 @@ angular.module('catenaccio.directives')
             scope: true,
             template: [
                 '<button ng-click="toggleDraw()"' +
-                '        tooltip="{{ isDrawing() ? (\'MOVE\' | translate) : (\'DRAW\' | translate) }}"',
-                '        tooltip-placement="left">',
+                '        tooltip="{{ isDrawing() ? (\'MOVE\' | translate) : (\'DRAW\' | translate) }}">',
                 '  <i class="fa fa-arrows" ng-if="isDrawing()"></i>',
                 '  <i class="fa fa-pencil" ng-if="!isDrawing()"></i>',
                 '</button>'

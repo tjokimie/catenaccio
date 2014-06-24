@@ -114,4 +114,3 @@ angular.module('catenaccio.services')
 
         return Tactics;
     });
-

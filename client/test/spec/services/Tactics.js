@@ -3,34 +3,34 @@ describe('Service: Tactics', function () {
 
     beforeEach(module('catenaccio.services'));
 
-    var layerService, httpBackend, Tactics, tactics;
+    var layerService, $httpBackend, Tactics, tactics;
 
     beforeEach(module(function ($provide) {
         layerService = jasmine.createSpyObj('layerService', ['findShapes']);
         $provide.value('layerService', layerService);
     }));
 
-    beforeEach(inject(function ($httpBackend, _Tactics_) {
-        httpBackend = $httpBackend;
+    beforeEach(inject(function (_$httpBackend_, _Tactics_) {
+        $httpBackend = _$httpBackend_;
         Tactics = _Tactics_;
         tactics = new Tactics();
     }));
 
     afterEach(function () {
-        httpBackend.verifyNoOutstandingExpectation();
-        httpBackend.verifyNoOutstandingRequest();
+        $httpBackend.verifyNoOutstandingExpectation();
+        $httpBackend.verifyNoOutstandingRequest();
     });
 
     it('should get players', function () {
-        httpBackend.expectGET('/api/tactics/666').respond(200);
+        $httpBackend.expectGET('/api/tactics/666').respond(200);
         tactics.$get({ id: 666 });
-        httpBackend.flush();
+        $httpBackend.flush();
     });
 
     it('should save tactics', function () {
-        httpBackend.expectPOST('/api/tactics').respond(201);
+        $httpBackend.expectPOST('/api/tactics').respond(201);
         tactics.$save();
-        httpBackend.flush();
+        $httpBackend.flush();
     });
 
     describe('football', function () {

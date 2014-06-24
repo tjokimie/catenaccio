@@ -17,7 +17,7 @@ angular.module('catenaccio.directives')
             scope: true,
             template: [
                 '<button ng-click="open()" ng-class="{ disabled: disabled }"',
-                '        tooltip="{{ \'SAVE_IMAGE\' | translate }}" tooltip-placement="left">',
+                '        tooltip="{{ \'SAVE_IMAGE\' | translate }}">',
                 '  <i class="fa fa-picture-o"></i>',
                 '</button>'
             ].join('\n'),

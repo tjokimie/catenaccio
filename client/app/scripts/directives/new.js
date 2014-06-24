@@ -7,7 +7,7 @@ angular.module('catenaccio.directives')
             replace: true,
             scope: true,
             template: [
-                '<button ng-click="new()" tooltip="{{ \'NEW\' | translate }}" tooltip-placement="left">',
+                '<button ng-click="new()" tooltip="{{ \'NEW\' | translate }}">',
                 '  <i class="fa fa-trash-o"></i>',
                 '</button>'
             ].join('\n'),
