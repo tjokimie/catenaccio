@@ -5,7 +5,6 @@ env:
   global:
   - secure: Lt96t7GXM0HxAnX9SmCmsqYqKwJ8LrUR61fqWZVZ2YvIyoNNaMq1sF3jYiwDBqvPO+XT9n2P09JwpROvCExvBqELrKZbq/j3dp7GtgQgMFajRR+j+F2mL7C79ySTjscmyncb5AzBJ2aCS29rUgO1HT7ky7fj7H6j63GTCCmbn10=
   - secure: CP/Ue5LmzXxvyZEOO5DZO0VglxUALk06nUrBvOyP4c1IVRPqX9fRnADEjkMK+XMpnQ3NCkBnr2eJDNdHfvCfp87bA/zs/IssIdgOAyd65MfBzSyENnckWazHuqBzTxshBobQsKGRLosvEbTkpaH4sdeJeXuUVwDMC/nigW/OIWg=
-  - LOGS_DIR=/tmp/protractor-build/logs
 services:
 - mongodb
 addons:
@@ -13,5 +12,4 @@ addons:
 before_install: npm install -g grunt-cli
 install: npm install
 before_script:
-  - mkdir -p $LOGS_DIR
   - grunt build
