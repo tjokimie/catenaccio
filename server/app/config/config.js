@@ -7,7 +7,7 @@ module.exports = (function () {
         'font-src': ['\'self\''],
         'img-src': ['\'self\'', 'data:'],
         'script-src': ['\'self\'', '\'unsafe-eval\'', '\'unsafe-inline\'', 'ajax.googleapis.com', 'www.google-analytics.com'],
-        'style-src': ['\'self\'', '\'unsafe-inline\'', 'netdna.bootstrapcdn.com'],
+        'style-src': ['\'self\'', '\'unsafe-inline\''],
         sandbox: ['allow-forms', 'allow-same-origin', 'allow-scripts'],
         'report-uri': ['/report-violation'],
         reportOnly: false,
