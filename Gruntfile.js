@@ -322,7 +322,7 @@ module.exports = function (grunt) {
         'clean',
         'bower',
         'bower_postinst',
-        'bowerInstall',
+        'wiredep',
         'styles',
         'useminPrepare',
         'concat',
