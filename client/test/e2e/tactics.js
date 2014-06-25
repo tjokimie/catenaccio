@@ -7,9 +7,7 @@ describe('Catenaccio', function () {
         var catenaccio = new Catenaccio();
         catenaccio.get();
         catenaccio.save();
-        catenaccio.notification.getAttribute('notification-tooltip').then(function (notification) {
-            expect(notification).toBe('Saved!');
-        });
+        expect(catenaccio.notification.getAttribute('notification-tooltip')).toBe('Saved!');
     });
 
     it('should redirect after save', function () {
