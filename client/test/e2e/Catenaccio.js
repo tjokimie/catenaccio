@@ -8,11 +8,11 @@ module.exports = function () {
     };
 
     this.save = function () {
-        enableSave();
+        makeHistory();
         element(by.className('fa-save')).click();
     };
 
-    function enableSave() {
-        browser.executeScript('angular.element($(".fa-save")).scope().isDisabled = function () {}');
+    function makeHistory() {
+        browser.executeScript('angular.element(document.body).injector().get("layerService").makeHistory();');
     }
 };
