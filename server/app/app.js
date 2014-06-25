@@ -25,7 +25,7 @@ app.set('port', process.env.PORT || 3000);
 app.use(morgan('dev'));
 app.use(compress());
 app.use(methodOverride());
-app.use(bodyParser());
+app.use(bodyParser.json());
 app.use(serveStatic(path.join(__dirname, '../../' + config.public)));
 
 // bootstrap routes
