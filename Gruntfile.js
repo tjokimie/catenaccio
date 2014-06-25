@@ -291,7 +291,7 @@ module.exports = function (grunt) {
             },
             travis: {
                 options: {
-                    configFile: 'protractor-travis.conf.js'
+                    configFile: 'protractor-sauce.conf.js'
                 }
             }
         }
