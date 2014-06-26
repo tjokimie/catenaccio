@@ -4,6 +4,7 @@
   "private": true,
   "author": "Tuomo Jokimies",
   "license": "MIT",
+  "subdomain": "catenaccio",
   "scripts": {
     "install": "node ./node_modules/protractor/bin/webdriver-manager update",
     "start": "node ./server/server.js",
