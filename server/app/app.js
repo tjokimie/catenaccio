@@ -47,6 +47,6 @@ function requireModels(fs) {
 function securityHeaders(app, helmet) {
     app.use(helmet.xframe());
     app.use(helmet.csp(config.csp));
-    app.use(helmet.iexss());
+    app.use(helmet.xssFilter());
     app.use(helmet.hidePoweredBy());
 }
