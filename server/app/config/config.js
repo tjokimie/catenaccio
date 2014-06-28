@@ -25,7 +25,7 @@ module.exports = (function () {
         };
     case 'travis':
         return {
-            csp: {}, // PhantomJS has issues with CSP
+            csp: csp,
             db: 'mongodb://localhost/test',
             public: 'build/',
             brute: { freeRetries: 99999 }
