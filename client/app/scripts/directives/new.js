@@ -8,7 +8,7 @@ angular.module('catenaccio.directives')
             scope: true,
             template: [
                 '<button ng-click="new()" tooltip="{{ \'NEW\' | translate }}">',
-                '  <i class="fa fa-trash-o"></i>',
+                '  <i class="fa fa-file-o"></i>',
                 '</button>'
             ].join('\n'),
             link: function ($scope) {
