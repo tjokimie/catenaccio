@@ -7,6 +7,10 @@ module.exports = function () {
         browser.get('http://localhost:8000');
     };
 
+    this.new = function () {
+        element(by.className('fa-file-o')).click();
+    };
+
     this.save = function () {
         makeHistory();
         element(by.className('fa-save')).click();
