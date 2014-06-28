@@ -16,3 +16,4 @@ deploy:
   api_key:
     secure: zw20bMOepg5XvIO0/FEGdYtFRx6XX4AabR0jQzk3DZDmKYhApvzw4WpfU9IX2Qt0u5afHAW9NF7w0jQC8aovdoscvJs9AtrCDo+OKjlCursk3P8wQ6lga/9urqE6kWhLP1kQWtGre8sSC2AwsCxqA7p3eOpsOgy11CiwhIs8IS8=
   on: master
+  skip_cleanup: true
