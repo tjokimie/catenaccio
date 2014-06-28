@@ -1,5 +1,6 @@
-node_modules
+.DS_Store
+.tmp
 build
 client/app/bower_components
-.tmp
+node_modules
 workspace.xml
