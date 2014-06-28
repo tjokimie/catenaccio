@@ -39,10 +39,21 @@ p:not(:last-child) {
   margin-bottom: 2em;
 }
 .browsehappy {
-  margin: .2em 0;
-  background: #ccc;
-  color: #000;
-  padding: .2em 0;
+  background-color: #f1c40f;
+  padding: 1em 2em;
+  color: #000000;
+  text-align: center;
+}
+.browsehappy strong {
+  font-weight: bold;
+}
+.browsehappy a {
+  border-bottom: none !important;
+  color: #000000;
+  text-decoration: underline;
+}
+.browsehappy a:hover {
+  text-decoration: none;
 }
 button {
   width: 100%;

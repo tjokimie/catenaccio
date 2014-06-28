@@ -48,8 +48,22 @@ p {
 }
 
 .browsehappy {
-    margin: .2em 0;
-    background: #ccc;
-    color: #000;
-    padding: .2em 0;
+    background-color: @sun-flower;
+    padding: 1em 2em;
+    color: @black;
+    text-align: center;
+
+    strong {
+        font-weight: bold;
+    }
+
+    a {
+        border-bottom: none !important;
+        color: @black;
+        text-decoration: underline;
+
+        &:hover {
+            text-decoration: none;
+        }
+    }
 }
