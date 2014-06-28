@@ -5,7 +5,7 @@ module.exports = (function () {
         'default-src': '\'none\'',
         'connect-src': '\'self\'',
         'font-src': ['\'self\''],
-        'img-src': ['\'self\'', 'data:'],
+        'img-src': ['\'self\'', 'data:', 'www.google-analytics.com'],
         'script-src': ['\'self\'', '\'unsafe-eval\'', '\'unsafe-inline\'', 'ajax.googleapis.com', 'www.google-analytics.com'],
         'style-src': ['\'self\'', '\'unsafe-inline\''],
         sandbox: ['allow-forms', 'allow-same-origin', 'allow-scripts'],
