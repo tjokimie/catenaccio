@@ -19,7 +19,7 @@ module.exports = (function () {
     case 'production':
         return {
             csp: csp,
-            db: 'mongodb://localhost/test',
+            db: process.env.DB,
             public: 'build/',
             brute: {}
         };
