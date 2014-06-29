@@ -1,10 +1,10 @@
 angular.module('catenaccio')
     .controller('PitchController',
-    function ($window, stageService, pitchBuilder, tacticsBuilder, layerService, tactics) {
+    function (dimensionService, stageService, pitchBuilder, tacticsBuilder, layerService, tactics) {
         'use strict';
 
-        var width = $($window).width() * 0.8;
-        var height = $($window).height() * 0.8;
+        var width = dimensionService.width();
+        var height = dimensionService.height();
 
         stageService.newStage(width, height, 'pitch');
 

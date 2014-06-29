@@ -5,7 +5,7 @@ describe('Controller: PitchController', function () {
 
     beforeEach(module('views/app.html'));
 
-    var scope, stageService, Tactics, createController;
+    var scope, stageService, Tactics, dimensionService, createController;
 
     beforeEach(module(function ($provide) {
         stageService = jasmine.createSpyObj('stageService', [
@@ -14,9 +14,11 @@ describe('Controller: PitchController', function () {
         $provide.value('stageService', stageService);
     }));
 
-    beforeEach(inject(function ($rootScope, $controller, _Tactics_) {
+    /* jshint camelcase: false */
+    beforeEach(inject(function ($rootScope, $controller, _Tactics_, _dimensionService_) {
         scope = $rootScope.$new();
         Tactics = _Tactics_;
+        dimensionService = _dimensionService_;
         createController = function () {
             return $controller('PitchController', {
                 '$scope': scope,
@@ -24,13 +26,14 @@ describe('Controller: PitchController', function () {
             });
         };
     }));
+    /* jshint camelcase: true */
 
-    it('should create stage based on browser width and height', function () {
-        spyOn(jQuery.fn, 'width').andReturn(1000);
-        spyOn(jQuery.fn, 'height').andReturn(500);
+    it('should create stage based on dimensions', function () {
+        spyOn(dimensionService, 'width').andReturn(800);
+        spyOn(dimensionService, 'height').andReturn(600);
         createController();
         expect(stageService.newStage.mostRecentCall.args[0]).toBe(800);
-        expect(stageService.newStage.mostRecentCall.args[1]).toBe(400);
+        expect(stageService.newStage.mostRecentCall.args[1]).toBe(600);
     });
 
     it('should add pitch and item layers', function () {
