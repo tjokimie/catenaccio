@@ -5,6 +5,7 @@
 body {
   width: 100%;
   height: 100%;
+  margin: 4em 0;
   background: #ecf0f1;
   font-size: 16px;
   font-family: 'Roboto', sans-serif;
@@ -35,8 +36,11 @@ p:not(:last-child) {
   margin: 4em auto;
   padding: 0 2em;
 }
+.row:first-child {
+  margin-top: 0;
+}
 .row:last-child {
-  margin-bottom: 2em;
+  margin-bottom: 0;
 }
 .browsehappy {
   background-color: #f1c40f;

@@ -7,6 +7,7 @@
 body {
     width: 100%;
     height: 100%;
+    margin: 4em 0;
     background: @clouds;
     font-size: 16px;
     font-family: 'Roboto', sans-serif;
@@ -42,8 +43,12 @@ p {
     margin: 4em auto;
     padding: 0 2em;
 
+    &:first-child {
+        margin-top: 0;
+    }
+
     &:last-child {
-        margin-bottom: 2em;
+        margin-bottom: 0;
     }
 }
 
