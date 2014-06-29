@@ -5,10 +5,12 @@ describe('Service: notificationService', function () {
 
     var notificationService, $interval;
 
+    /* jshint camelcase: false */
     beforeEach(inject(function (_notificationService_, _$interval_) {
         notificationService = _notificationService_;
         $interval = _$interval_;
     }));
+    /* jshint camelcase: true */
 
     describe('success', function () {
         var success;

@@ -10,10 +10,12 @@ describe('Service: stageService', function () {
         $provide.value('$q', q);
     }));
 
+    /* jshint camelcase: false */
     beforeEach(inject(function (_stageService_) {
         stageService = _stageService_;
         container = document.createElement('div');
     }));
+    /* jshint camelcase: true */
 
     describe('new stage', function () {
         it('should set width based on height', function () {

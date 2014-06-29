@@ -14,9 +14,11 @@ describe('Service: pencilService', function () {
         $provide.value('layerService', layerService);
     }));
 
+    /* jshint camelcase: false */
     beforeEach(inject(function (_pencilService_) {
         pencilService = _pencilService_;
     }));
+    /* jshint camelcase: true */
 
     describe('toggle draw', function () {
         beforeEach(function () {

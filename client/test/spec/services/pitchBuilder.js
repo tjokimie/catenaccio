@@ -5,9 +5,11 @@ describe('Service: pitchBuilder', function () {
 
     var pitchBuilder;
 
+    /* jshint camelcase: false */
     beforeEach(inject(function (_pitchBuilder_) {
         pitchBuilder = _pitchBuilder_;
     }));
+    /* jshint camelcase: true */
 
     it('should add background', function () {
         var layer = pitchBuilder.newLayer().addBackground().build();

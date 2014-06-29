@@ -5,6 +5,7 @@ describe('Directive: save', function () {
 
     var element, $scope, $httpBackend, Tactics, locationService, layerService, notificationService;
 
+    /* jshint camelcase: false */
     beforeEach(inject(
         function ($rootScope, _$httpBackend_, _Tactics_, _locationService_, _layerService_, _notificationService_) {
             element = angular.element('<save></save>');
@@ -21,6 +22,7 @@ describe('Directive: save', function () {
             spyOn(notificationService, 'error').andCallThrough();
         }
     ));
+    /* jshint camelcase: true */
 
     afterEach(function () {
         $httpBackend.verifyNoOutstandingExpectation();

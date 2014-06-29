@@ -5,12 +5,14 @@ describe('Service: locationService', function () {
 
     var locationService, $route, $location, $rootScope;
 
+    /* jshint camelcase: false */
     beforeEach(inject(function (_locationService_, _$route_, _$location_, _$rootScope_) {
         locationService = _locationService_;
         $route = _$route_;
         $location = _$location_;
         $rootScope = _$rootScope_;
     }));
+    /* jshint camelcase: true */
 
     it('should call location path', function () {
         spyOn($location, 'path').andCallThrough();

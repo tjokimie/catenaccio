@@ -5,10 +5,12 @@ describe('Service: tacticsBuilder', function () {
 
     var tacticsBuilder, Tactics;
 
+    /* jshint camelcase: false */
     beforeEach(inject(function (_tacticsBuilder_, _Tactics_) {
         tacticsBuilder = _tacticsBuilder_;
         Tactics = _Tactics_;
     }));
+    /* jshint camelcase: true */
 
     describe('football', function () {
         var layer;

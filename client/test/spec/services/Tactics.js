@@ -10,11 +10,13 @@ describe('Service: Tactics', function () {
         $provide.value('layerService', layerService);
     }));
 
+    /* jshint camelcase: false */
     beforeEach(inject(function (_$httpBackend_, _Tactics_) {
         $httpBackend = _$httpBackend_;
         Tactics = _Tactics_;
         tactics = new Tactics();
     }));
+    /* jshint camelcase: true */
 
     afterEach(function () {
         $httpBackend.verifyNoOutstandingExpectation();

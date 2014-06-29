@@ -10,10 +10,12 @@ describe('Service: layerService', function () {
         $provide.value('stageService', stageService);
     }));
 
+    /* jshint camelcase: false */
     beforeEach(inject(function (_layerService_) {
         layerService = _layerService_;
         layer = new Kinetic.Layer();
     }));
+    /* jshint camelcase: true */
 
     describe('set layer', function () {
         beforeEach(function () {

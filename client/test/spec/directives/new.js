@@ -5,6 +5,7 @@ describe('Directive: new', function () {
 
     var element, $scope, $location, $route;
 
+    /* jshint camelcase: false */
     beforeEach(inject(function ($rootScope, _$location_, _$route_) {
         element = angular.element('<new></new>');
         $scope = $rootScope.$new();
@@ -12,6 +13,7 @@ describe('Directive: new', function () {
         $route = _$route_;
         spyOn($route, 'reload');
     }));
+    /* jshint camelcase: true */
 
     it('should redirect when not in root', inject(function ($compile) {
         spyOn($location, 'path').andReturn('/foo');
