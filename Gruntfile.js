@@ -247,11 +247,6 @@ module.exports = function (grunt) {
                     port: 3000
                 }
             },
-            prod: {
-                options: {
-                    'node_env': 'production'
-                }
-            },
             test: {
                 options: {
                     'node_env': 'test',
@@ -333,8 +328,8 @@ module.exports = function (grunt) {
         'cssmin',
         'uglify',
         'rev',
-        'usemin',
-        'htmlmin'
+        'htmlmin',
+        'usemin'
     ]);
 
     grunt.registerTask('default', ['test', 'build']);
