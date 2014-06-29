@@ -3,6 +3,6 @@
 .tmp
 build
 client/app/bower_components
-main.css
+client/app/styles/main.css
 node_modules
 workspace.xml
