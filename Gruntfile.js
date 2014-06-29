@@ -328,8 +328,8 @@ module.exports = function (grunt) {
         'cssmin',
         'uglify',
         'rev',
-        'htmlmin',
-        'usemin'
+        'usemin',
+        'htmlmin'
     ]);
 
     grunt.registerTask('default', ['test', 'build']);
