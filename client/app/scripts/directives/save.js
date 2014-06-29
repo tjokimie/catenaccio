@@ -1,5 +1,5 @@
 angular.module('catenaccio.directives')
-    .directive('save', function (Tactics, layerService, locationService, notificationService) {
+    .directive('save', function ($location, Tactics, layerService, notificationService) {
         'use strict';
 
         return {
@@ -37,7 +37,7 @@ angular.module('catenaccio.directives')
                             isSaving = false;
                             notificationService.success('SUCCESS');
                             layerService.setSaved(true);
-                            locationService.pathWithoutReload('/' + tactics.id);
+                            $location.path('/' + tactics.id, false);
                         }, function () {
                             isSaving = false;
                             notificationService.error('ERROR');

@@ -1,17 +1,17 @@
 angular.module('catenaccio.services')
-    .factory('locationService', function ($rootScope, $location, $route) {
+    .run(['$rootScope', '$location', '$route', function ($rootScope, $location, $route) {
         'use strict';
 
-        var locationService = {};
+        var pathFn = $location.path;
 
-        locationService.pathWithoutReload = function (path) {
-            var lastRoute = $route.current;
-            var off = $rootScope.$on('$locationChangeSuccess', function () {
-                $route.current = lastRoute;
-                off();
-            });
-            $location.path(path);
+        $location.path = function (path, reload) {
+            if (reload === false) {
+                var lastRoute = $route.current;
+                var off = $rootScope.$on('$locationChangeSuccess', function () {
+                    $route.current = lastRoute;
+                    off();
+                });
+            }
+            return pathFn.call($location, path);
         };
-
-        return locationService;
-    });
+    }]);

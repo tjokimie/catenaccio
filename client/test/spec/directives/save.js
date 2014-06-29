@@ -3,18 +3,18 @@ describe('Directive: save', function () {
 
     beforeEach(module('catenaccio.directives'));
 
-    var element, $scope, $httpBackend, Tactics, locationService, layerService, notificationService;
+    var element, $scope, $httpBackend, $location, Tactics, layerService, notificationService;
 
     /* jshint camelcase: false */
     beforeEach(inject(
-        function ($rootScope, _$httpBackend_, _Tactics_, _locationService_, _layerService_, _notificationService_) {
+        function ($rootScope, _$httpBackend_, _$location_, _Tactics_, _layerService_, _notificationService_) {
             element = angular.element('<save></save>');
             $scope = $rootScope.$new();
             $httpBackend = _$httpBackend_;
+            $location = _$location_;
+            spyOn($location, 'path');
             Tactics = _Tactics_;
             spyOn(Tactics.prototype, 'fromShapes');
-            locationService = _locationService_;
-            spyOn(locationService, 'pathWithoutReload');
             layerService = _layerService_;
             spyOn(layerService, 'hasSaved').andReturn(false);
             notificationService = _notificationService_;
@@ -97,7 +97,7 @@ describe('Directive: save', function () {
         });
 
         it('should change location', function () {
-            expect(locationService.pathWithoutReload).toHaveBeenCalledWith('/1');
+            expect($location.path).toHaveBeenCalledWith('/1', false);
         });
     });
 
@@ -124,7 +124,7 @@ describe('Directive: save', function () {
         });
 
         it('should not change location', function () {
-            expect(locationService.pathWithoutReload).not.toHaveBeenCalled();
+            expect($location.path).not.toHaveBeenCalled();
         });
     });
 });
