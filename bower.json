@@ -13,7 +13,8 @@
     "jquery": "~2.1.1",
     "kineticjs": "~5.1.0",
     "lodash": "~2.4.1",
-    "font-awesome": "~4.1.0"
+    "font-awesome": "~4.1.0",
+    "normalize-css": "~3.0.1"
   },
   "devDependencies": {
     "angular-mocks": "~1.2.18",
