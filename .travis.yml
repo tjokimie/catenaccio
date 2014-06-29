@@ -4,6 +4,7 @@ env:
   global:
   - secure: Lt96t7GXM0HxAnX9SmCmsqYqKwJ8LrUR61fqWZVZ2YvIyoNNaMq1sF3jYiwDBqvPO+XT9n2P09JwpROvCExvBqELrKZbq/j3dp7GtgQgMFajRR+j+F2mL7C79ySTjscmyncb5AzBJ2aCS29rUgO1HT7ky7fj7H6j63GTCCmbn10=
   - secure: CP/Ue5LmzXxvyZEOO5DZO0VglxUALk06nUrBvOyP4c1IVRPqX9fRnADEjkMK+XMpnQ3NCkBnr2eJDNdHfvCfp87bA/zs/IssIdgOAyd65MfBzSyENnckWazHuqBzTxshBobQsKGRLosvEbTkpaH4sdeJeXuUVwDMC/nigW/OIWg=
+  - secure: b3O7aYTGa+MNMlNyVHH6GgtNQauOESQSsxEhuhqJ+pMR7/um29XAN53FsHVU9o8oyHIrTqkmwVt5rEfc8qJEF/DfKK3GGB6xWwaTXI064ArP9P+RysumFrJ7roWCyTJNZPryxJix4b1khANhcIZtBMF/POYp++Cjg4N2rHzwuG8=
 services: mongodb
 addons:
   sauce_connect: true
@@ -12,7 +13,7 @@ install: npm install
 before_script: grunt build
 deploy:
   provider: nodejitsu
-  user: 'tjokimie'
+  user: tjokimie
   api_key:
     secure: zw20bMOepg5XvIO0/FEGdYtFRx6XX4AabR0jQzk3DZDmKYhApvzw4WpfU9IX2Qt0u5afHAW9NF7w0jQC8aovdoscvJs9AtrCDo+OKjlCursk3P8wQ6lga/9urqE6kWhLP1kQWtGre8sSC2AwsCxqA7p3eOpsOgy11CiwhIs8IS8=
   on: master
