@@ -8,6 +8,6 @@ var bruteforce = require('./bruteforce');
 module.exports = function (app) {
     app.post('/api/tactics', bruteforce.prevent, tactics.create);
     app.get('/api/tactics/:id', tactics.findOne);
-    app.post('/report-violation', bruteforce.prevent, logger.log);
+    app.post('/report-violation', bruteforce.prevent, logger.warn);
     app.use('/', index.index);
 };
