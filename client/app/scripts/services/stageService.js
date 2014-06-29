@@ -18,18 +18,22 @@ angular.module('catenaccio.services')
             self.stage.add(layer);
         };
 
-        stageService.addListener = function (event, fn) {
+        stageService.addListener = function (events, fn) {
             var container = self.stage.getContainer();
-            var listener = [ event, fn, false ];
-            self.listeners.push(listener);
-            container.addEventListener.apply(container, listener);
+            events.split(' ').forEach(function (event) {
+                var listener = [ event, fn, false ];
+                self.listeners.push(listener);
+                container.addEventListener.apply(container, listener);
+            });
         };
 
-        stageService.removeListener = function (event, fn) {
+        stageService.removeListener = function (events, fn) {
             var container = self.stage.getContainer();
-            var listener = [ event, fn, false ];
-            _(self.listeners).remove(listener);
-            container.removeEventListener.apply(container, listener);
+            events.split(' ').forEach(function (event) {
+                var listener = [ event, fn, false ];
+                _(self.listeners).remove(listener);
+                container.removeEventListener.apply(container, listener);
+            });
         };
 
         stageService.getWidth = function () {

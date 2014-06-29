@@ -66,7 +66,7 @@ describe('Service: pencilService', function () {
         });
     });
 
-    describe('mouse events', function () {
+    describe('mouse and touch events', function () {
         var listeners = {}, startPoint;
 
         beforeEach(function () {
@@ -77,20 +77,20 @@ describe('Service: pencilService', function () {
             });
             stageService.getPointerPosition.andReturn(startPoint);
             pencilService.toggleDraw();
-            listeners.mousedown();
+            listeners['mousedown touchstart']();
         });
 
-        it('should create spline on mousedown', function () {
+        it('should create spline on mousedown or touchstart', function () {
             var points = layerService.addShape.mostRecentCall.args[0].getPoints();
             expect(points.length).toBe(2);
             expect(points[0]).toEqual(startPoint.x);
             expect(points[1]).toEqual(startPoint.y);
         });
 
-        it('should continue spline on mousemove', function () {
+        it('should continue spline on mousemove or touchmove', function () {
             var point = { x: 2, y: 3 };
             stageService.getPointerPosition.andReturn(point);
-            listeners.mousemove();
+            listeners['mousemove touchmove']();
             var points = layerService.addShape.mostRecentCall.args[0].getPoints();
             expect(points.length).toBe(4);
             expect(points[2]).toEqual(point.x);
@@ -98,10 +98,10 @@ describe('Service: pencilService', function () {
             expect(layerService.drawLayer).toHaveBeenCalled();
         });
 
-        it('should end spline on mouseup', function () {
+        it('should end spline on mouseup or touchend', function () {
             var point = { x: 3, y: 4 };
             stageService.getPointerPosition.andReturn(point);
-            listeners.mouseup();
+            listeners['mouseup touchend']();
             var points = layerService.addShape.mostRecentCall.args[0].getPoints();
             expect(points.length).toBe(4);
             expect(points[2]).toEqual(point.x);
@@ -109,24 +109,24 @@ describe('Service: pencilService', function () {
             expect(layerService.drawLayer).toHaveBeenCalled();
         });
 
-        describe('after draw', function () {
+        describe('after mouseup or touchend', function () {
             beforeEach(function () {
-                listeners.mouseup();
+                listeners['mouseup touchend']();
             });
 
             it('should make history', function () {
                 expect(layerService.makeHistory).toHaveBeenCalled();
             });
 
-            it('should not draw on mousemove', function () {
-                listeners.mousemove();
+            it('should not draw on mousemove or touchmove', function () {
+                listeners['mousemove touchmove']();
                 var points = layerService.addShape.mostRecentCall.args[0].getPoints();
                 expect(points.length).toBe(4);
                 expect(layerService.drawLayer.calls.length).toBe(1);
             });
 
-            it('should not draw on mouseup', function () {
-                listeners.mouseup();
+            it('should not draw on mouseup or touchend', function () {
+                listeners['mouseup touchend']();
                 var points = layerService.addShape.mostRecentCall.args[0].getPoints();
                 expect(points.length).toBe(4);
                 expect(layerService.drawLayer.calls.length).toBe(1);

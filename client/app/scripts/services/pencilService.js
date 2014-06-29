@@ -42,21 +42,21 @@ angular.module('catenaccio.services')
                 document.body.style.cursor = 'crosshair';
                 self.started = true;
                 layerService.setDraggable(false);
-                stageService.addListener('mousedown', mousedown);
-                stageService.addListener('mousemove', mousemove);
-                stageService.addListener('mouseup', mouseup);
+                stageService.addListener('mousedown touchstart', start);
+                stageService.addListener('mousemove touchmove', move);
+                stageService.addListener('mouseup touchend', end);
             }
 
             function endDraw() {
                 document.body.style.cursor = 'default';
                 self.started = false;
                 layerService.setDraggable(true);
-                stageService.removeListener('mousedown', mousedown);
-                stageService.removeListener('mousemove', mousemove);
-                stageService.removeListener('mouseup', mouseup);
+                stageService.removeListener('mousedown touchstart', start);
+                stageService.removeListener('mousemove touchmove', move);
+                stageService.removeListener('mouseup touchend', end);
             }
 
-            function mousedown() {
+            function start() {
                 var position = stageService.getPointerPosition();
                 self.drawing = true;
                 var options = {
@@ -66,13 +66,13 @@ angular.module('catenaccio.services')
                 layerService.addShape(self.pencil);
             }
 
-            function mousemove() {
+            function move() {
                 if (self.drawing) {
                     addPointAndDraw();
                 }
             }
 
-            function mouseup() {
+            function end() {
                 if (self.drawing) {
                     self.drawing = false;
                     addPointAndDraw();
