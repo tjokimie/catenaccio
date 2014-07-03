@@ -2,13 +2,16 @@
 
 module.exports = function (grunt) {
 
-    // Load grunt tasks automatically
+    var htmlminOptions = {
+        collapseWhitespace: true,
+        collapseBooleanAttributes: true,
+        removeOptionalTags: true
+    };
+
     require('load-grunt-tasks')(grunt);
 
-    // Time how long tasks take. Can help when optimizing build times
     require('time-grunt')(grunt);
 
-    // Define the configuration for all the tasks
     grunt.initConfig({
 
         yeoman: {
@@ -122,23 +125,13 @@ module.exports = function (grunt) {
                 dot: true,
                 cwd: '<%= yeoman.app %>',
                 dest: '<%= yeoman.build %>',
-                src: [
-                    '*.{ico,png,txt}',
-                    '*.html',
-                    'views/**/*.html'
-                ]
+                src: ['*.{ico,png,txt}', '*.html']
             },
             fontAwesome: {
                 expand: true,
                 cwd: '<%= yeoman.app %>/bower_components/font-awesome/fonts',
                 dest: '<%= yeoman.build %>/fonts',
                 src: '*'
-            },
-            styles: {
-                expand: true,
-                cwd: '<%= yeoman.app %>/styles',
-                dest: '.tmp/styles/',
-                src: '**/*.css'
             }
         },
 
@@ -157,6 +150,19 @@ module.exports = function (grunt) {
             }
         },
 
+        ngtemplates: {
+            app: {
+                cwd: '<%= yeoman.app %>',
+                src: 'views/**/*.html',
+                dest: '.tmp/templates.js',
+                options:  {
+                    usemin: 'scripts/scripts.js',
+                    module: 'catenaccio',
+                    htmlmin:  htmlminOptions
+                }
+            }
+        },
+
         htmlrefs: {
             build: {
                 src: '<%= yeoman.build %>/index.html',
@@ -166,17 +172,12 @@ module.exports = function (grunt) {
 
         htmlmin: {
             build: {
-                options: {
-                    collapseWhitespace: true,
-                    collapseBooleanAttributes: true,
-                    removeCommentsFromCDATA: true,
-                    removeOptionalTags: true
-                },
+                options: htmlminOptions,
                 files: [
                     {
                         expand: true,
                         cwd: '<%= yeoman.build %>',
-                        src: ['*.html', 'views/**/*.html'],
+                        src: ['*.html'],
                         dest: '<%= yeoman.build %>'
                     }
                 ]
@@ -263,7 +264,7 @@ module.exports = function (grunt) {
         }
     });
 
-    grunt.registerTask('styles', ['less', 'copy:styles', 'autoprefixer']);
+    grunt.registerTask('styles', ['less', 'autoprefixer']);
 
     grunt.registerTask('start', ['styles', 'express:dev', 'watch']);
 
@@ -293,6 +294,7 @@ module.exports = function (grunt) {
         'copy:build',
         'copy:fontAwesome',
         'useminPrepare',
+        'ngtemplates',
         'concat',
         'cssmin',
         'htmlrefs',
