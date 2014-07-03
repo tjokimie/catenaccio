@@ -3,11 +3,12 @@ var config = require('./protractor-shared.conf').config;
 config.sauceUser = process.env.SAUCE_USERNAME;
 config.sauceKey = process.env.SAUCE_ACCESS_KEY;
 
-config.allScriptsTimeout = 60000;
+config.allScriptsTimeout = 120000;
 
 config.multiCapabilities = [
     {
         browserName: 'chrome',
+        version: '35',
         'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
         build: process.env.TRAVIS_BUILD_NUMBER,
         name: 'Catenaccio with Chrome'
