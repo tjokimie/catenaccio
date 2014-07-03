@@ -22,8 +22,8 @@ module.exports = function (grunt) {
                 tasks: ['less']
             },
             express: {
-                files:  ['server/**/*.js'],
-                tasks:  ['express:dev'],
+                files: ['server/**/*.js'],
+                tasks: ['express:dev'],
                 options: {
                     spawn: false // Without this option specified express won't be reloaded
                 }
@@ -263,7 +263,7 @@ module.exports = function (grunt) {
         }
     });
 
-    grunt.registerTask('styles', ['copy:styles', 'less', 'autoprefixer']);
+    grunt.registerTask('styles', ['less', 'copy:styles', 'autoprefixer']);
 
     grunt.registerTask('start', ['styles', 'express:dev', 'watch']);
 
