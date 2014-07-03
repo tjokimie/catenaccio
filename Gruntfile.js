@@ -11,14 +11,11 @@ module.exports = function (grunt) {
     // Define the configuration for all the tasks
     grunt.initConfig({
 
-        // Project settings
         yeoman: {
-            // configurable paths
             app: require('./bower.json').appPath || 'client/app',
             build: 'build'
         },
 
-        // Watches files for changes and runs tasks based on the changed files
         watch: {
             less: {
                 files: ['<%= yeoman.app %>/styles/less/**/*.less'],
@@ -33,7 +30,6 @@ module.exports = function (grunt) {
             }
         },
 
-        // Make sure code styles are up to par and there are no obvious mistakes
         jshint: {
             options: {
                 jshintrc: '.jshintrc',
@@ -54,37 +50,9 @@ module.exports = function (grunt) {
             }
         },
 
-        // Empties folders to start fresh
         clean: {
-            build: {
-                files: [
-                    {
-                        dot: true,
-                        src: [
-                            '<%= yeoman.build %>/*',
-                            '!<%= yeoman.build %>/.git*'
-                        ]
-                    }
-                ]
-            },
+            build: '<%= yeoman.build %>/*',
             tmp: '.tmp'
-        },
-
-        // Add vendor prefixed styles
-        autoprefixer: {
-            options: {
-                browsers: ['last 1 version']
-            },
-            build: {
-                files: [
-                    {
-                        expand: true,
-                        cwd: '.tmp/styles/',
-                        src: '**/*.css',
-                        dest: '.tmp/styles/'
-                    }
-                ]
-            }
         },
 
         bower: {
@@ -107,7 +75,6 @@ module.exports = function (grunt) {
             }
         },
 
-        // Automatically inject Bower components into the app
         wiredep: {
             app: {
                 src: '<%= yeoman.app %>/index.html',
@@ -118,22 +85,63 @@ module.exports = function (grunt) {
             }
         },
 
-        // Renames files for browser caching purposes
-        rev: {
-            build: {
+        less: {
+            styles: {
                 files: {
-                    src: [
-                        '<%= yeoman.build %>/scripts/**/*.js',
-                        '<%= yeoman.build %>/styles/**/*.css',
-                        '<%= yeoman.build %>/styles/fonts/*'
+                    '<%= yeoman.app %>/styles/main.css': '<%= yeoman.app %>/styles/less/main.less'
+                }
+            },
+            bootstrap: {
+                files: {
+                    '<%= yeoman.app %>/bower_components/bootstrap/dist/css/bootstrap.css': [
+                        '<%= yeoman.app %>/styles/less/bootstrap/modals.less'
                     ]
                 }
             }
         },
 
-        // Reads HTML for usemin blocks to enable smart builds that automatically
-        // concat, minify and revision files. Creates configurations in memory so
-        // additional tasks can operate on them
+        autoprefixer: {
+            options: {
+                browsers: ['last 1 version']
+            },
+            build: {
+                files: [
+                    {
+                        expand: true,
+                        cwd: '.tmp/styles/',
+                        src: '**/*.css',
+                        dest: '.tmp/styles/'
+                    }
+                ]
+            }
+        },
+
+        copy: {
+            build: {
+                expand: true,
+                dot: true,
+                cwd: '<%= yeoman.app %>',
+                dest: '<%= yeoman.build %>',
+                src: [
+                    '*.{ico,png,txt}',
+                    '*.html',
+                    'views/**/*.html'
+                ]
+            },
+            fontAwesome: {
+                expand: true,
+                cwd: '<%= yeoman.app %>/bower_components/font-awesome/fonts',
+                dest: '<%= yeoman.build %>/fonts',
+                src: '*'
+            },
+            styles: {
+                expand: true,
+                cwd: '<%= yeoman.app %>/styles',
+                dest: '.tmp/styles/',
+                src: '**/*.css'
+            }
+        },
+
         useminPrepare: {
             html: '<%= yeoman.app %>/index.html',
             options: {
@@ -141,7 +149,6 @@ module.exports = function (grunt) {
             }
         },
 
-        // Performs rewrites based on rev and the useminPrepare configuration
         usemin: {
             html: ['<%= yeoman.build %>/**/*.html'],
             css: ['<%= yeoman.build %>/styles/**/*.css'],
@@ -150,7 +157,13 @@ module.exports = function (grunt) {
             }
         },
 
-        // The following *-min tasks produce minified files in the build folder
+        htmlrefs: {
+            build: {
+                src: '<%= yeoman.build %>/index.html',
+                dest: '<%= yeoman.build %>/index.html'
+            }
+        },
+
         htmlmin: {
             build: {
                 options: {
@@ -170,8 +183,6 @@ module.exports = function (grunt) {
             }
         },
 
-        // Allow the use of non-minsafe AngularJS files. Automatically makes it
-        // minsafe compatible so Uglify does not destroy the ng references
         ngmin: {
             build: {
                 files: [
@@ -185,55 +196,15 @@ module.exports = function (grunt) {
             }
         },
 
-        // Replace CDN references
-        htmlrefs: {
+        rev: {
             build: {
-                src: '<%= yeoman.build %>/index.html',
-                dest: '<%= yeoman.build %>/index.html'
-            }
-        },
-
-        less: {
-            styles: {
                 files: {
-                    '<%= yeoman.app %>/styles/main.css': '<%= yeoman.app %>/styles/less/main.less'
-                }
-            },
-            bootstrap: {
-                files: {
-                    '<%= yeoman.app %>/bower_components/bootstrap/dist/css/bootstrap.css': [
-                        '<%= yeoman.app %>/styles/less/bootstrap/modals.less'
+                    src: [
+                        '<%= yeoman.build %>/scripts/**/*.js',
+                        '<%= yeoman.build %>/styles/**/*.css',
+                        '<%= yeoman.build %>/styles/fonts/*'
                     ]
                 }
-            }
-        },
-
-        // Copies remaining files to places other tasks can use
-        copy: {
-            build: {
-                expand: true,
-                dot: true,
-                cwd: '<%= yeoman.app %>',
-                dest: '<%= yeoman.build %>',
-                src: [
-                    '*.{ico,png,txt}',
-                    '.htaccess',
-                    '*.html',
-                    'views/**/*.html',
-                    'fonts/*'
-                ]
-            },
-            fontAwesome: {
-                expand: true,
-                cwd: '<%= yeoman.app %>/bower_components/font-awesome/fonts',
-                dest: '<%= yeoman.build %>/fonts',
-                src: '*'
-            },
-            styles: {
-                expand: true,
-                cwd: '<%= yeoman.app %>/styles',
-                dest: '.tmp/styles/',
-                src: '**/*.css'
             }
         },
 
@@ -294,7 +265,7 @@ module.exports = function (grunt) {
 
     grunt.registerTask('styles', ['copy:styles', 'less', 'autoprefixer']);
 
-    grunt.registerTask('server', ['less', 'express:dev', 'watch']);
+    grunt.registerTask('start', ['styles', 'express:dev', 'watch']);
 
     grunt.registerTask('e2e-test', ['express:test', 'protractor:test']);
 
@@ -319,13 +290,13 @@ module.exports = function (grunt) {
         'bower_postinst',
         'wiredep',
         'styles',
-        'useminPrepare',
-        'concat',
-        'ngmin',
         'copy:build',
         'copy:fontAwesome',
-        'htmlrefs',
+        'useminPrepare',
+        'concat',
         'cssmin',
+        'htmlrefs',
+        'ngmin',
         'uglify',
         'rev',
         'usemin',
