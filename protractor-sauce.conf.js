@@ -3,7 +3,7 @@ var config = require('./protractor-shared.conf').config;
 config.sauceUser = process.env.SAUCE_USERNAME;
 config.sauceKey = process.env.SAUCE_ACCESS_KEY;
 
-config.allScriptsTimeout = 30000;
+config.allScriptsTimeout = 60000;
 
 config.multiCapabilities = [
     {
