@@ -14,7 +14,6 @@ describe('Catenaccio', function () {
     });
 
     it('should redirect after save', function () {
-        catenaccio.get();
         catenaccio.save();
         expect(browser.getCurrentUrl()).toMatch(/\/[A-Za-z0-9_\-]{7,12}/);
     });
