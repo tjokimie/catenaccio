@@ -13,7 +13,7 @@ describe('Service: pitchBuilder', function () {
 
     it('should add background', function () {
         var layer = pitchBuilder.newLayer().addBackground().build();
-        expect(layer.getChildren().length).toBe(2);
+        expect(layer.getChildren()).toHaveLength(2);
     });
 
     it('should add pitch markings', function () {
@@ -21,7 +21,7 @@ describe('Service: pitchBuilder', function () {
             .addGoals().addGoalAreas().addPenaltyAreas()
             .addCorners().addHalfwayLine().addCenterCircle()
             .addTouchlineAndGoalLine().build();
-        expect(layer.getChildren().length).toBe(1);
-        expect(layer.getChildren()[0].getChildren().length).toBe(7);
+        expect(layer.getChildren()).toHaveLength(1);
+        expect(layer.getChildren()[0].getChildren()).toHaveLength(7);
     });
 });

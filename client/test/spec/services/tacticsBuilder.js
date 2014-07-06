@@ -22,7 +22,7 @@ describe('Service: tacticsBuilder', function () {
         });
 
         it('should have football', function () {
-            expect(layer.getChildren().length).toBe(1);
+            expect(layer.getChildren()).toHaveLength(1);
             expect(layer.getChildren()[0].getClassName()).toBe('Circle');
         });
 
@@ -42,7 +42,7 @@ describe('Service: tacticsBuilder', function () {
         });
 
         it('should have full team', function () {
-            expect(layer.getChildren().length).toBe(11);
+            expect(layer.getChildren()).toHaveLength(11);
         });
 
         it('should have numbers from one to eleven', function () {
@@ -72,7 +72,7 @@ describe('Service: tacticsBuilder', function () {
         });
 
         it('should have full team', function () {
-            expect(layer.getChildren().length).toBe(11);
+            expect(layer.getChildren()).toHaveLength(11);
         });
 
         it('should have numbers from one to eleven', function () {
@@ -104,7 +104,7 @@ describe('Service: tacticsBuilder', function () {
         });
 
         it('should have pencils', function () {
-            expect(layer.getChildren().length).toBe(2);
+            expect(layer.getChildren()).toHaveLength(2);
             expect(Tactics.prototype.getPencils).toHaveBeenCalled();
         });
 
@@ -115,7 +115,7 @@ describe('Service: tacticsBuilder', function () {
     });
 
     function expectToHaveNumbersFromOneToEleven(players) {
-        expect(players.length).toBe(11);
+        expect(players).toHaveLength(11);
         _(players)
             .map(function (player) {
                 var numberText = player.find('Text')[0].getText();

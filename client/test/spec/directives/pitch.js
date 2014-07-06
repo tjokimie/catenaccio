@@ -38,25 +38,25 @@ describe('Directive: pitch', function () {
     it('should add background and pitch', inject(function ($compile) {
         $compile(element)($scope);
         var shapes = stageService.addLayer.calls.argsFor(0)[0].getChildren();
-        expect(shapes.length).toBe(2);
+        expect(shapes).toHaveLength(2);
     }));
 
     it('should add pitch markings', inject(function ($compile) {
         $compile(element)($scope);
         var shapes = stageService.addLayer.calls.argsFor(0)[0].getChildren()[1].getChildren();
-        expect(shapes.length).toBe(8);
+        expect(shapes).toHaveLength(8);
     }));
 
     it('should add home and away players and a football', inject(function ($compile) {
         $compile(element)($scope);
         var shapes = stageService.addLayer.calls.argsFor(1)[0].getChildren();
-        expect(shapes.length).toBe(11 * 2 + 1);
+        expect(shapes).toHaveLength(11 * 2 + 1);
     }));
 
     it('should add pencils', inject(function ($compile) {
         spyOn(Tactics.prototype, 'getPencils').and.returnValue([[1, 2, 3, 4], [1, 2]]);
         $compile(element)($scope);
         var shapes = stageService.addLayer.calls.argsFor(1)[0].getChildren();
-        expect(shapes.length).toBe(11 * 2 + 3);
+        expect(shapes).toHaveLength(11 * 2 + 3);
     }));
 });

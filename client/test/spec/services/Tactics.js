@@ -175,7 +175,7 @@ describe('Service: Tactics', function () {
     it('should get pencils', function () {
         tactics.pencils = createPencils();
         var pencils = tactics.getPencils();
-        expect(pencils.length).toBe(2);
+        expect(pencils).toHaveLength(2);
         expect(pencils[0].points).toEqual([1, 2, 3, 4]);
         expect(pencils[0].z).toEqual(1);
         expect(pencils[1].points).toEqual([1, 2]);
@@ -214,7 +214,7 @@ describe('Service: Tactics', function () {
 
         it('should have only players', function () {
             expect(tactics.football).toBeUndefined();
-            expect(tactics.players.length).toBe(4);
+            expect(tactics.players).toHaveLength(4);
             expect(tactics.pencils).toBeUndefined();
         });
 
@@ -260,7 +260,7 @@ describe('Service: Tactics', function () {
         it('should have only pencils', function () {
             expect(tactics.football).toBeUndefined();
             expect(tactics.players).toBeUndefined();
-            expect(tactics.pencils.length).toBe(2);
+            expect(tactics.pencils).toHaveLength(2);
         });
 
         it('should have points', function () {

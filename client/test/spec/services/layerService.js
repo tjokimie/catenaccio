@@ -44,7 +44,7 @@ describe('Service: layerService', function () {
         });
 
         it('should add shape to layer', function () {
-            expect(layer.getChildren().length).toBe(1);
+            expect(layer.getChildren()).toHaveLength(1);
         });
 
         it('should set shape draggable', function () {
@@ -123,11 +123,11 @@ describe('Service: layerService', function () {
         });
 
         it('should not find shapes', function () {
-            expect(layerService.findShapes('Text').length).toBe(0);
+            expect(layerService.findShapes('Text')).toHaveLength(0);
         });
 
         it('should have shapes', function () {
-            expect(layerService.findShapes('Circle').length).toBe(1);
+            expect(layerService.findShapes('Circle')).toHaveLength(1);
         });
     });
 
@@ -218,7 +218,7 @@ describe('Service: layerService', function () {
             it('should do undo', function () {
                 layerService.undoHistory();
                 var children = layerService.setLayer.calls.mostRecent().args[0].getChildren();
-                expect(children.length).toBe(0);
+                expect(children).toHaveLength(0);
             });
         });
 
@@ -235,7 +235,7 @@ describe('Service: layerService', function () {
             it('should do redo', function () {
                 layerService.redoHistory();
                 var children = layerService.setLayer.calls.mostRecent().args[0].getChildren();
-                expect(children.length).toBe(1);
+                expect(children).toHaveLength(1);
             });
 
             it('should not have redo after make', function () {
