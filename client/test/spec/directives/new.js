@@ -16,7 +16,7 @@ describe('Directive: new', function () {
     /* jshint camelcase: true */
 
     it('should redirect when not in root', inject(function ($compile) {
-        spyOn($location, 'path').andReturn('/foo');
+        spyOn($location, 'path').and.returnValue('/foo');
         element = $compile(element)($scope);
         $scope.$digest();
         element.click();
@@ -24,7 +24,7 @@ describe('Directive: new', function () {
     }));
 
     it('should reload when in root', inject(function ($compile) {
-        spyOn($location, 'path').andReturn('/');
+        spyOn($location, 'path').and.returnValue('/');
         element = $compile(element)($scope);
         $scope.$digest();
         element.click();

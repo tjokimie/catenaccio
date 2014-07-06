@@ -3,11 +3,13 @@ describe('Service: stageService', function () {
 
     beforeEach(module('catenaccio.services'));
 
-    var q, stageService, container;
+    var stageService, container, promise;
 
     beforeEach(module(function ($provide) {
-        q = jasmine.createSpyObj('$q', ['defer']);
-        $provide.value('$q', q);
+        var $q = jasmine.createSpyObj('$q', ['defer']);
+        promise = jasmine.createSpyObj('promise', ['resolve']);
+        $q.defer.and.returnValue(promise);
+        $provide.value('$q', $q);
     }));
 
     /* jshint camelcase: false */
@@ -78,37 +80,23 @@ describe('Service: stageService', function () {
     });
 
     describe('data url', function () {
-        var resolver;
-
         beforeEach(function () {
             var layer = new Kinetic.Layer();
             stageService.newStage(800, 600, container);
             stageService.addLayer(layer);
-            resolver = jasmine.createSpyObj('resolver', ['resolve']);
-            q.defer.andReturn(resolver);
         });
 
-        it('should resolve promise', function () {
+        it('should sesolve promise', function (done) {
+            promise.resolve.and.callFake(done);
             stageService.toDataURL();
-            waitsForPromiseToBeResolved();
-            runs(function () {
-                expect(resolver.resolve).toHaveBeenCalled();
-            });
         });
 
-        it('should return data url', function () {
+        it('should return data url', function (done) {
+            promise.resolve.and.callFake(function (dataURL) {
+                expect(dataURL.substring(0, 21)).toBe('data:image/png;base64');
+                done();
+            });
             stageService.toDataURL();
-            waitsForPromiseToBeResolved();
-            runs(function () {
-                var type = resolver.resolve.mostRecentCall.args[0].substring(0, 21);
-                expect(type).toBe('data:image/png;base64');
-            });
         });
-
-        function waitsForPromiseToBeResolved() {
-            waitsFor(function () {
-                return resolver.resolve.calls.length > 0;
-            }, 'promise to be resolved', 5000);
-        }
     });
 });

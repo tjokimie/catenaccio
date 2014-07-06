@@ -190,7 +190,7 @@ describe('Service: layerService', function () {
             var circle = new Kinetic.Circle();
             layerService.setLayer(layer);
             layerService.addShape(circle);
-            spyOn(layerService, 'setLayer').andCallThrough();
+            spyOn(layerService, 'setLayer').and.callThrough();
         });
 
         it('should not have undo', function () {
@@ -217,7 +217,7 @@ describe('Service: layerService', function () {
 
             it('should do undo', function () {
                 layerService.undoHistory();
-                var children = layerService.setLayer.mostRecentCall.args[0].getChildren();
+                var children = layerService.setLayer.calls.mostRecent().args[0].getChildren();
                 expect(children.length).toBe(0);
             });
         });
@@ -234,7 +234,7 @@ describe('Service: layerService', function () {
 
             it('should do redo', function () {
                 layerService.redoHistory();
-                var children = layerService.setLayer.mostRecentCall.args[0].getChildren();
+                var children = layerService.setLayer.calls.mostRecent().args[0].getChildren();
                 expect(children.length).toBe(1);
             });
 

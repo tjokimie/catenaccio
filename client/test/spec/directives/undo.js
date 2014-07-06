@@ -16,7 +16,7 @@ describe('Directive: undo', function () {
     }));
 
     it('should undo history on click', inject(function ($compile) {
-        layerService.hasHistoryUndo.andReturn(true);
+        layerService.hasHistoryUndo.and.returnValue(true);
         element = $compile(element)($scope);
         $scope.$digest();
         element.click();
@@ -24,14 +24,14 @@ describe('Directive: undo', function () {
     }));
 
     it('should disable the button', inject(function ($compile) {
-        layerService.hasHistoryUndo.andReturn(false);
+        layerService.hasHistoryUndo.and.returnValue(false);
         element = $compile(element)($scope);
         $scope.$digest();
         expect(element).toHaveClass('disabled');
     }));
 
     it('should not call undo when disabled', inject(function ($compile) {
-        layerService.hasHistoryUndo.andReturn(false);
+        layerService.hasHistoryUndo.and.returnValue(false);
         element = $compile(element)($scope);
         $scope.$digest();
         element.click();
@@ -39,7 +39,7 @@ describe('Directive: undo', function () {
     }));
 
     it('should enable the button', inject(function ($compile) {
-        layerService.hasHistoryUndo.andReturn(true);
+        layerService.hasHistoryUndo.and.returnValue(true);
         element = $compile(element)($scope);
         $scope.$digest();
         expect(element).not.toHaveClass('disabled');

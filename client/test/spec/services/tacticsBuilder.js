@@ -17,7 +17,7 @@ describe('Service: tacticsBuilder', function () {
 
         beforeEach(function () {
             var tactics = new Tactics();
-            spyOn(Tactics.prototype, 'getFootball').andCallThrough();
+            spyOn(Tactics.prototype, 'getFootball').and.callThrough();
             layer = tacticsBuilder.newLayer().setTactics(tactics).addFootball().build();
         });
 
@@ -36,8 +36,8 @@ describe('Service: tacticsBuilder', function () {
 
         beforeEach(function () {
             var tactics = new Tactics();
-            spyOn(Tactics.prototype, 'getHomeGoalkeeper').andCallThrough();
-            spyOn(Tactics.prototype, 'getHomePlayer').andCallThrough();
+            spyOn(Tactics.prototype, 'getHomeGoalkeeper').and.callThrough();
+            spyOn(Tactics.prototype, 'getHomePlayer').and.callThrough();
             layer = tacticsBuilder.newLayer().setTactics(tactics).addHomeGoalkeeper().addHomePlayers().build();
         });
 
@@ -55,8 +55,8 @@ describe('Service: tacticsBuilder', function () {
         });
 
         it('should get position for players', function () {
-            var args = getArgsForCalls(Tactics.prototype.getHomePlayer.calls);
-            expect(Tactics.prototype.getHomePlayer.calls.length).toBe(10);
+            var args = _(Tactics.prototype.getHomePlayer.calls.allArgs()).flatten().value();
+            expect(Tactics.prototype.getHomePlayer.calls.count()).toBe(10);
             expect(args).toEqual(_.range(2, 12));
         });
     });
@@ -66,8 +66,8 @@ describe('Service: tacticsBuilder', function () {
 
         beforeEach(function () {
             var tactics = new Tactics();
-            spyOn(Tactics.prototype, 'getAwayGoalkeeper').andCallThrough();
-            spyOn(Tactics.prototype, 'getAwayPlayer').andCallThrough();
+            spyOn(Tactics.prototype, 'getAwayGoalkeeper').and.callThrough();
+            spyOn(Tactics.prototype, 'getAwayPlayer').and.callThrough();
             layer = tacticsBuilder.newLayer().setTactics(tactics).addAwayGoalkeeper().addAwayPlayers().build();
         });
 
@@ -85,8 +85,8 @@ describe('Service: tacticsBuilder', function () {
         });
 
         it('should get position for players', function () {
-            var args = getArgsForCalls(Tactics.prototype.getAwayPlayer.calls);
-            expect(Tactics.prototype.getAwayPlayer.calls.length).toBe(10);
+            var args = _(Tactics.prototype.getAwayPlayer.calls.allArgs()).flatten().value();
+            expect(Tactics.prototype.getAwayPlayer.calls.count()).toBe(10);
             expect(args).toEqual(_.range(2, 12));
         });
     });
@@ -96,7 +96,7 @@ describe('Service: tacticsBuilder', function () {
 
         beforeEach(function () {
             var tactics = new Tactics();
-            spyOn(Tactics.prototype, 'getPencils').andReturn([
+            spyOn(Tactics.prototype, 'getPencils').and.returnValue([
                 { points: [1, 2, 3, 4], z: 0 },
                 { points: [1, 2], z: 0 }
             ]);
@@ -129,13 +129,5 @@ describe('Service: tacticsBuilder', function () {
                     expect(number).toBe(numbers[i - 1] + 1);
                 }
             });
-    }
-
-    function getArgsForCalls(calls) {
-        return _(calls)
-            .map(function (call) {
-                return call.args;
-            })
-            .flatten().value();
     }
 });

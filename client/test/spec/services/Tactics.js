@@ -184,7 +184,7 @@ describe('Service: Tactics', function () {
 
     describe('footballFromShapes', function () {
         beforeEach(function () {
-            layerService.findShapes.andReturn([createFootballShape()]);
+            layerService.findShapes.and.returnValue([createFootballShape()]);
             tactics.footballFromShapes();
         });
 
@@ -203,7 +203,7 @@ describe('Service: Tactics', function () {
 
     describe('playersFromShapes', function () {
         beforeEach(function () {
-            layerService.findShapes.andReturn([
+            layerService.findShapes.and.returnValue([
                 createPlayerShapeWithNameAndNumber('home-goalkeeper', 1),
                 createPlayerShapeWithNameAndNumber('home', 10),
                 createPlayerShapeWithNameAndNumber('away-goalkeeper', 1),
@@ -250,7 +250,7 @@ describe('Service: Tactics', function () {
 
     describe('pencilsFromShapes', function () {
         beforeEach(function () {
-            layerService.findShapes.andReturn([
+            layerService.findShapes.and.returnValue([
                 createPencilShapeWithPointsWithZ([1, 2, 3, 4], 1),
                 createPencilShapeWithPointsWithZ([20, 10], 2)
             ]);

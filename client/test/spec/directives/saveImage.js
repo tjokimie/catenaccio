@@ -7,7 +7,7 @@ describe('Directive: saveImage', function () {
 
     beforeEach(module(function ($provide) {
         stageService = jasmine.createSpyObj('stageService', ['toDataURL']);
-        stageService.toDataURL.andReturn('data:image/png;base64,FOO');
+        stageService.toDataURL.and.returnValue('data:image/png;base64,FOO');
         $provide.value('stageService', stageService);
     }));
 
@@ -50,7 +50,7 @@ describe('Directive: saveImage', function () {
         $scope.$digest();
         element.click();
         element.click();
-        expect(stageService.toDataURL.calls.length).toBe(1);
+        expect(stageService.toDataURL.calls.count()).toBe(1);
     }));
 
     it('should be enabled after close', inject(function ($compile) {

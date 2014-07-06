@@ -23,14 +23,14 @@ describe('Directive: drawMove', function () {
     }));
 
     it('should show arrows when drawing', inject(function ($compile) {
-        pencilService.hasStarted.andReturn(true);
+        pencilService.hasStarted.and.returnValue(true);
         element = $compile(element)($scope);
         $scope.$digest();
         expect(element.find('i')).toHaveClass('fa-arrows');
     }));
 
     it('should show pencil when not drawing', inject(function ($compile) {
-        pencilService.hasStarted.andReturn(false);
+        pencilService.hasStarted.and.returnValue(false);
         element = $compile(element)($scope);
         $scope.$digest();
         expect(element.find('i')).toHaveClass('fa-pencil');

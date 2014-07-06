@@ -16,7 +16,7 @@ describe('Directive: redo', function () {
     }));
 
     it('should redo history on click', inject(function ($compile) {
-        layerService.hasHistoryRedo.andReturn(true);
+        layerService.hasHistoryRedo.and.returnValue(true);
         element = $compile(element)($scope);
         $scope.$digest();
         element.click();
@@ -24,14 +24,14 @@ describe('Directive: redo', function () {
     }));
 
     it('should disable the button', inject(function ($compile) {
-        layerService.hasHistoryRedo.andReturn(false);
+        layerService.hasHistoryRedo.and.returnValue(false);
         element = $compile(element)($scope);
         $scope.$digest();
         expect(element).toHaveClass('disabled');
     }));
 
     it('should not call redo when disabled', inject(function ($compile) {
-        layerService.hasHistoryRedo.andReturn(false);
+        layerService.hasHistoryRedo.and.returnValue(false);
         element = $compile(element)($scope);
         $scope.$digest();
         element.click();
@@ -39,7 +39,7 @@ describe('Directive: redo', function () {
     }));
 
     it('should enable the button', inject(function ($compile) {
-        layerService.hasHistoryRedo.andReturn(true);
+        layerService.hasHistoryRedo.and.returnValue(true);
         element = $compile(element)($scope);
         $scope.$digest();
         expect(element).not.toHaveClass('disabled');

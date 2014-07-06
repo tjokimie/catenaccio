@@ -16,10 +16,10 @@ describe('Directive: save', function () {
             Tactics = _Tactics_;
             spyOn(Tactics.prototype, 'fromShapes');
             layerService = _layerService_;
-            spyOn(layerService, 'hasSaved').andReturn(false);
+            spyOn(layerService, 'hasSaved').and.returnValue(false);
             notificationService = _notificationService_;
-            spyOn(notificationService, 'success').andCallThrough();
-            spyOn(notificationService, 'error').andCallThrough();
+            spyOn(notificationService, 'success').and.callThrough();
+            spyOn(notificationService, 'error').and.callThrough();
         }
     ));
     /* jshint camelcase: true */
@@ -56,14 +56,14 @@ describe('Directive: save', function () {
     }));
 
     it('should disable when tactics are saved', inject(function ($compile) {
-        layerService.hasSaved.andReturn(true);
+        layerService.hasSaved.and.returnValue(true);
         element = $compile(element)($scope);
         $scope.$digest();
         expect(element.find('button')).toHaveClass('disabled');
     }));
 
     it('should not call save when tactics are saved', inject(function ($compile) {
-        layerService.hasSaved.andReturn(true);
+        layerService.hasSaved.and.returnValue(true);
         element = $compile(element)($scope);
         $scope.$digest();
         element.find('button').click();
