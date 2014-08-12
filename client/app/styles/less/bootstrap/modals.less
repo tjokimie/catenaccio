@@ -38,26 +38,23 @@
     box-shadow: none !important;
 }
 .modal-close {
+    position: absolute;
+    top: -.75em;
+    right: -.75em;
+    width: 1.5em;
+    height: 1.5em;
+    z-index: @zindex-modal-background + 1;
+    background: @white;
+    border: none !important;
+    border-radius: .75em;
+    text-align: center;
     font-size: 1.5em;
     font-weight: bold;
-    line-height: 1em;
+    line-height: 1.5em;
     color: @silver;
     cursor: pointer;
 
     &:hover {
         color: @concrete;
-    }
-    &:after {
-        content: '\00d7';
-        position: absolute;
-        top: -.75em;
-        right: -.75em;
-        width: 1.5em;
-        height: 1.5em;
-        z-index: @zindex-modal-background + 1;
-        background: @white;
-        border-radius: .75em;
-        line-height: 1.5em;
-        text-align: center;
     }
 }
