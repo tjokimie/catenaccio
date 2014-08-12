@@ -18,6 +18,11 @@ describe('Catenaccio', function () {
         expect(browser.getCurrentUrl()).toMatch(/\/[A-Za-z0-9_\-]{7,12}/);
     });
 
+    it('should save image', function () {
+        catenaccio.saveImage();
+        catenaccio.closeSaveImage();
+    });
+
     it('should redirect after new', function () {
         catenaccio.new();
         expect(browser.getCurrentUrl()).toMatch(/\/$/);

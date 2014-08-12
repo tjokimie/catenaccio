@@ -1,7 +1,7 @@
 module.exports = function () {
     'use strict';
 
-    this.notification = element(by.css('[notification-tooltip]'));
+    this.notification = element(by.className('success'));
 
     this.get = function () {
         browser.get('http://localhost:8000');
@@ -14,6 +14,16 @@ module.exports = function () {
     this.save = function () {
         makeHistory();
         element(by.className('fa-save')).click();
+    };
+
+    this.saveImage = function () {
+        element(by.className('fa-picture-o')).click();
+        browser.sleep(200);
+    };
+
+    this.closeSaveImage = function () {
+        element(by.className('modal-close')).click();
+        browser.sleep(200);
     };
 
     function makeHistory() {
