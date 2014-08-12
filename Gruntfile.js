@@ -186,7 +186,7 @@ module.exports = function (grunt) {
             }
         },
 
-        ngmin: {
+        ngAnnotate: {
             build: {
                 files: [
                     {
@@ -300,7 +300,7 @@ module.exports = function (grunt) {
         'concat',
         'cssmin',
         'htmlrefs',
-        'ngmin',
+        'ngAnnotate',
         'uglify',
         'rev',
         'usemin',

@@ -7,20 +7,20 @@ angular.module('catenaccio')
                 templateUrl: 'views/app.html',
                 controller: 'PitchController',
                 resolve: {
-                    tactics: ['$q', 'Tactics', function ($q, Tactics) { // https://github.com/btford/ngmin/issues/35
+                    tactics: function ($q, Tactics) { // https://github.com/btford/ngmin/issues/35
                         var deferred = $q.defer();
                         deferred.resolve(new Tactics());
                         return deferred.promise;
-                    }]
+                    }
                 }
             })
             .when('/:id', {
                 templateUrl: 'views/app.html',
                 controller: 'PitchController',
                 resolve: {
-                    tactics: ['$route', 'Tactics', function ($route, Tactics) {
+                    tactics: function ($route, Tactics) {
                         return Tactics.get({ id: $route.current.params.id }).$promise;
-                    }]
+                    }
                 }
             });
 
