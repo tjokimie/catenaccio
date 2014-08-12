@@ -20,3 +20,6 @@ deploy:
   domain: tjokimie
   on: master
   skip_cleanup: true
+notifications:
+  email:
+    on_failure: change
