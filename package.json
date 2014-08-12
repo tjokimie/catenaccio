@@ -4,11 +4,6 @@
   "private": true,
   "author": "Tuomo Jokimies",
   "license": "MIT",
-  "subdomain": "catenaccio",
-  "domains": [
-    "catenacc.io",
-    "www.catenacc.io"
-  ],
   "scripts": {
     "pretest": "node ./node_modules/protractor/bin/webdriver-manager update",
     "start": "node ./server/server.js",

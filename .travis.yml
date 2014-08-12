@@ -12,9 +12,9 @@ before_install: npm install -g grunt-cli
 install: npm install
 before_script: grunt build
 deploy:
-  provider: nodejitsu
+  provider: openshift
   user: tjokimie
-  api_key:
-    secure: zw20bMOepg5XvIO0/FEGdYtFRx6XX4AabR0jQzk3DZDmKYhApvzw4WpfU9IX2Qt0u5afHAW9NF7w0jQC8aovdoscvJs9AtrCDo+OKjlCursk3P8wQ6lga/9urqE6kWhLP1kQWtGre8sSC2AwsCxqA7p3eOpsOgy11CiwhIs8IS8=
+  password:
+    secure: f7HOVOVQRb/5lvch67bkj76+2yHjeSbyRZrFHVFKrlVNKzY++T8YL+080nR55y+Yi4ce26f+JOZsOfLqPEQlDMCKusAXV28VBdJrfBHDLJCCzjZfFqtIKccoL636sNmBCPJ6eCTOByKadgyFKgZB+CsKDNE4/T65PQob+p8zAaQ=
   on: master
   skip_cleanup: true

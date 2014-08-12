@@ -19,7 +19,7 @@ module.exports = (function () {
     case 'production':
         return {
             csp: csp,
-            db: process.env.DB,
+            db: process.env.OPENSHIFT_MONGODB_DB_URL,
             public: 'build/',
             brute: {}
         };
