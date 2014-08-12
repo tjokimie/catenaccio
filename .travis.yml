@@ -13,7 +13,8 @@ install: npm install
 before_script: grunt build
 deploy:
   provider: openshift
-  user: tjokimie
+  user:
+    secure: CRE8eqL59RP07heIRbXgTghFrMPHHlP+A6gpf0GZM6xiucqJcBnYDH2kM8eVCzL6OQYVr0nXqtAbR9ashmHoMpX60Jm93oHcPBgzjvGr9qVAmS8Qn9T7XZBmYAykO/2Wn5aXcskykhxEbyMoxNkXaao6ehm+MuwG5UOGH6ahAj0=
   password:
     secure: f7HOVOVQRb/5lvch67bkj76+2yHjeSbyRZrFHVFKrlVNKzY++T8YL+080nR55y+Yi4ce26f+JOZsOfLqPEQlDMCKusAXV28VBdJrfBHDLJCCzjZfFqtIKccoL636sNmBCPJ6eCTOByKadgyFKgZB+CsKDNE4/T65PQob+p8zAaQ=
   on: master
