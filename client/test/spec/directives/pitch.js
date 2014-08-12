@@ -1,7 +1,7 @@
 describe('Directive: pitch', function () {
     'use strict';
 
-    var element, $scope, stageService, Tactics, dimensionService;
+    var element, $scope, stageService, Tactics;
 
     beforeEach(module('catenaccio.directives'));
 
@@ -13,21 +13,26 @@ describe('Directive: pitch', function () {
     }));
 
     /* jshint camelcase: false */
-    beforeEach(inject(function ($rootScope, $controller, _Tactics_, _dimensionService_) {
+    beforeEach(inject(function ($rootScope, $controller, _Tactics_) {
         element = angular.element('<pitch tactics="tactics"></pitch>');
         $scope = $rootScope.$new();
         Tactics = _Tactics_;
         $scope.tactics = new Tactics();
-        dimensionService = _dimensionService_;
     }));
     /* jshint camelcase: true */
 
-    it('should create stage based on dimensions', inject(function ($compile) {
-        spyOn(dimensionService, 'width').and.returnValue(800);
-        spyOn(dimensionService, 'height').and.returnValue(600);
+    it('should calculate width', inject(function ($compile) {
+        spyOn(jQuery.fn, 'width').and.returnValue(1000);
+        spyOn(jQuery.fn, 'css').and.returnValue('50px');
         $compile(element)($scope);
         expect(stageService.newStage.calls.mostRecent().args[0]).toBe(800);
-        expect(stageService.newStage.calls.mostRecent().args[1]).toBe(600);
+    }));
+
+    it('should calculate height', inject(function ($compile) {
+        spyOn(jQuery.fn, 'height').and.returnValue(500);
+        spyOn(jQuery.fn, 'css').and.returnValue('25px');
+        $compile(element)($scope);
+        expect(stageService.newStage.calls.mostRecent().args[1]).toBe(400);
     }));
 
     it('should add pitch and item layers', inject(function ($compile) {
