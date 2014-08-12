@@ -8,10 +8,10 @@ exports.create = function (req, res) {
     tactics.save(function (err, data) {
         if (err) {
             console.log(req.headers, req.body, err);
-            res.send(400);
+            res.status(400).end();
         } else {
             res.location('/api/tactics/' + data._id);
-            res.send(201, data.getPublicFields());
+            res.status(201).send(data.getPublicFields());
         }
     });
 };
@@ -22,9 +22,9 @@ exports.findOne = function (req, res) {
             if (err) {
                 console.log(req.headers, req.body, err);
             }
-            res.send(404);
+            res.status(404).end();
         } else {
-            res.send(200, data.getPublicFields());
+            res.status(200).send(data.getPublicFields());
         }
     });
 };
