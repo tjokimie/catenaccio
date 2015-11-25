@@ -6,5 +6,3 @@ Catenacc.io
 [![devDependency Status](https://david-dm.org/tjokimie/catenaccio/dev-status.svg)](https://david-dm.org/tjokimie/catenaccio#info=devDependencies)
 
 Online football tactics board written with Node.js, AngularJS and KineticJS using MongoDB database.
-
-Beta available at http://catenacc.io/
