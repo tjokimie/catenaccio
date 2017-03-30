@@ -14,19 +14,19 @@ const config = {
   development: {
     csp,
     db: 'mongodb://localhost/test',
-    public: 'client/app/',
+    public: 'client/app',
     brute: { freeRetries: 99999 }
   },
   production: {
     csp,
     db: process.env.MONGODB_DB_URL,
-    public: 'build/',
+    public: 'build',
     brute: {}
   },
   test: {
     csp,
     db: 'mongodb://localhost/test',
-    public: 'client/app/',
+    public: 'client/app',
     brute: { freeRetries: 99999 }
   }
 };

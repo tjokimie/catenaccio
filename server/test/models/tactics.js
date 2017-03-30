@@ -1,8 +1,8 @@
-require('../../app/models/tactics')();
-const utils = require('../utils');
 const { expect } = require('chai');
 const mongoose = require('mongoose');
-const config = require('../../app/config/config');
+const config = require('../../app/config');
+const utils = require('../utils');
+require('../../app/models/tactics')();
 
 describe('Model: Tactics', () => {
   let connection, Tactics;
