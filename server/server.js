@@ -1,9 +1,7 @@
-'use strict';
+const app = require('./app/app');
 
-require('newrelic');
+const port = app.get('port');
 
-var app = require('./app/app');
-
-module.exports = app.listen(app.get('port'), function() {
-    console.log('Express server listening on port ' + app.get('port'));
+app.listen(port, () => {
+  console.log(`Express server listening on port ${port}`);
 });

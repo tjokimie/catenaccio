@@ -1,5 +1,5 @@
 language: node_js
-node_js: '0.10'
+node_js: 7
 env:
   global:
   - secure: Lt96t7GXM0HxAnX9SmCmsqYqKwJ8LrUR61fqWZVZ2YvIyoNNaMq1sF3jYiwDBqvPO+XT9n2P09JwpROvCExvBqELrKZbq/j3dp7GtgQgMFajRR+j+F2mL7C79ySTjscmyncb5AzBJ2aCS29rUgO1HT7ky7fj7H6j63GTCCmbn10=
@@ -11,15 +11,6 @@ addons:
 before_install: npm install -g grunt-cli
 install: npm install
 before_script: grunt build
-deploy:
-  provider: openshift
-  user:
-    secure: CRE8eqL59RP07heIRbXgTghFrMPHHlP+A6gpf0GZM6xiucqJcBnYDH2kM8eVCzL6OQYVr0nXqtAbR9ashmHoMpX60Jm93oHcPBgzjvGr9qVAmS8Qn9T7XZBmYAykO/2Wn5aXcskykhxEbyMoxNkXaao6ehm+MuwG5UOGH6ahAj0=
-  password:
-    secure: f7HOVOVQRb/5lvch67bkj76+2yHjeSbyRZrFHVFKrlVNKzY++T8YL+080nR55y+Yi4ce26f+JOZsOfLqPEQlDMCKusAXV28VBdJrfBHDLJCCzjZfFqtIKccoL636sNmBCPJ6eCTOByKadgyFKgZB+CsKDNE4/T65PQob+p8zAaQ=
-  domain: tjokimie
-  on: master
-  skip_cleanup: true
 notifications:
   email:
     on_failure: change
