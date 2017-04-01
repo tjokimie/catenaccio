@@ -1,18 +1,15 @@
 const { expect } = require('chai');
 const mongoose = require('mongoose');
 const config = require('../../app/config');
+const Tactics = require('../../app/models/Tactics');
 const utils = require('../utils');
-require('../../app/models/tactics')();
 
 describe('Model: Tactics', () => {
-  let connection, Tactics;
+  let connection;
 
   before(done => {
     connection = mongoose.createConnection(config.db);
-    connection.once('open', () => {
-      Tactics = connection.model('Tactics');
-      done();
-    });
+    connection.once('open', done);
   });
 
   after(done => {

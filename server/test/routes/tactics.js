@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
 const request = require('supertest');
 const { expect } = require('chai');
-const utils = require('../utils');
 const app = require('../../app/app');
-const Tactics = mongoose.model('Tactics');
+const Tactics = require('../../app/models/Tactics');
+const utils = require('../utils');
 
 describe('Route: tactics', () => {
   describe('POST /tactics', () => {

@@ -1,9 +1,8 @@
 const express = require('express');
-const mongoose = require('mongoose');
+const Tactics = require('../models/Tactics');
 const NotFoundError = require('../errors/NotFoundError');
 
 const router = express.Router();
-const Tactics = mongoose.model('Tactics');
 
 router.post('/', (req, res, next) => {
   const tactics = new Tactics(req.body);

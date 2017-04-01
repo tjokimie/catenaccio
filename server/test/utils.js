@@ -6,7 +6,10 @@ exports.createTactics = () => ({
     y: 44,
     z: 0
   },
-  players: createPlayers('home').concat(createPlayers('away')),
+  players: [
+    ...createPlayers('home'),
+    ...createPlayers('away')
+  ],
   pencils: [
     { points: [44, 0, 44, 1], x: 0, y: 0, z: 12 },
     { points: [0, 62.5], x: 0, y: 0, z: 13 }

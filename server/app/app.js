@@ -17,7 +17,6 @@ const errorHandler = require('./error-handler')
 const app = express();
 
 mongoose.connect(config.db);
-requireModels(fs);
 
 app.set('port', process.env.PORT || 3000);
 
@@ -31,7 +30,7 @@ if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
 }
 if (process.env.NODE_ENV === 'production') {
-    app.use(morgan());
+  app.use(morgan());
 }
 
 app.use(express.static(path.join(__dirname, `../../${config.public}`)));
@@ -42,9 +41,3 @@ app.use('/', indexFile);
 app.use(errorHandler);
 
 module.exports = app;
-
-function requireModels(fs) {
-  fs.readdirSync(path.join(__dirname, './models')).forEach(file => {
-    require(`./models/${file}`);
-  });
-}
